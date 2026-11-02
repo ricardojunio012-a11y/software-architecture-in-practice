@@ -1,0 +1,23 @@
+$ morada spaces
+party-room: fee $150.00, notice of 2 day(s)
+grill-area: fee $50.00, notice of 1 day(s)
+$ morada book R-01 A-101 party-room 2026-03-14 14 22 2026-03-02
+R-01 confirmed, fee $180.00
+$ morada book R-02 A-202 party-room 2026-03-14 20 23 2026-03-02
+error: time slot overlaps R-01
+$ morada book R-03 party-room 2026-03-20 10 12 2026-03-02
+usage: book <booking> <unit> <space> <date> <start> <end> <today>
+$ morada book R-04 B-101 grill-area 2026-03-03 10 12 2026-03-03
+error: minimum notice not met
+$ morada book R-05 B-202 grill-area 2026-03-10 10 14 2026-03-03
+R-05 confirmed, fee $50.00
+$ morada bookings party-room
+R-01 A-101 2026-03-14 14:00-22:00
+$ morada cancel R-01 2026-03-13
+R-01 canceled, cancellation fee $90.00
+$ morada cancel R-99 2026-03-13
+error: booking not found
+$ morada bookings pool
+error: space not found
+$ morada bookings grill-area
+R-05 B-202 2026-03-10 10:00-14:00

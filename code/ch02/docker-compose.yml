@@ -1,0 +1,21 @@
+# Chapter 2: quality requirements and communicating the architecture.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs the executable quality scenarios or the tests of the chosen language
+  app:
+    build: ./${LANGUAGE:-node}
+    image: morada-en-ch02-${LANGUAGE:-node}
+    # The environment is part of the performance scenario: explicit CPU and memory limits
+    cpus: ${CPUS:-1.0}
+    mem_limit: ${MEMORY:-512m}
+    volumes:
+      - ./scenarios:/data/scenarios:ro
+
+  # Structurizr (local mode): draws the C4 diagrams from docs/c4/workspace.dsl
+  structurizr:
+    image: structurizr/structurizr
+    command: ["local"]
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./docs/c4:/usr/local/structurizr

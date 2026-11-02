@@ -1,0 +1,11 @@
+{
+    "name": "morada/ch13",
+    "description": "Chapter 13: Backend for Frontend",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

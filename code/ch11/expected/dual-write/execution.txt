@@ -1,0 +1,3 @@
+P-01 saved; E-P-01 published
+P-02 saved; the process crashed before publishing
+P-03 saved; E-P-03 published

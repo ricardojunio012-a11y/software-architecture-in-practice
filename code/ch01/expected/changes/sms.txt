@@ -1,0 +1,6 @@
+To: +1 555-0101
+Garden Court Condominiums: dues 03/2026 for unit A-202: $666.88, due 03/10/2026. By 03/05/2026: $636.57. Card payment: CARD-garden-court-202603-A-202-66688
+----
+To: +1 555-0102
+Garden Court Condominiums: dues 03/2026 for unit B-102: $1,202.83, due 03/10/2026. Invoice: INV-garden-court-202603-B-102-120283
+----

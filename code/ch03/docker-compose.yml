@@ -1,0 +1,22 @@
+# Chapter 3: coupling, cohesion, and modularity.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs the before or after version of billing, or the tests of the chosen language
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch03-${LANGUAGE:-node}
+    environment:
+      TODAY: ${TODAY:-2026-03-02}
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+
+  # Compares the output with the approved result and measures the coupling between modules
+  tools:
+    build: ./tools
+    environment:
+      LANGUAGE: ${LANGUAGE:-node}
+    volumes:
+      - ./:/ch03
+    working_dir: /ch03

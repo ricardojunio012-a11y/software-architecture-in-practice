@@ -1,0 +1,22 @@
+# Chapter 1: the cost of change.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs one step of Morada or the unit tests of the chosen language
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch01-${LANGUAGE:-node}
+    environment:
+      TODAY: ${TODAY:-2026-03-02}
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+
+  # Compares the output with the approved result and measures the size of the changes
+  tools:
+    build: ./tools
+    environment:
+      LANGUAGE: ${LANGUAGE:-node}
+    volumes:
+      - ./:/ch01
+    working_dir: /ch01

@@ -1,0 +1,8 @@
+// How the resident pays. The calculation does not know which method it is.
+package morada.step4;
+
+public interface PaymentMethod {
+    String name();
+
+    String generateCode(String communityId, BillingPeriod period, Charge charge);
+}

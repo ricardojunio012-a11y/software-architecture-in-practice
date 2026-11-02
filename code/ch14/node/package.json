@@ -1,0 +1,17 @@
+{
+  "name": "morada-en-ch14",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4",
+    "@types/pg": "8.11.10"
+  },
+  "dependencies": {
+    "pg": "8.13.1"
+  }
+}

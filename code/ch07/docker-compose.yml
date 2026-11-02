@@ -1,0 +1,18 @@
+# Chapter 7: tactical DDD.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs the before version (anemic model) or the after version (rich model), or the tests
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch07-${LANGUAGE:-node}
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch07
+    working_dir: /ch07

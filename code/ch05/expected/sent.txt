@@ -1,0 +1,6 @@
+email anna.scott@example.com | Booking confirmed: Party room on 03/14/2026. Usage fee: $150.00.
+push device-0101 | [Booking rejected] Party room on 03/14/2026: space already booked on this date.
+push device-0101 | [Booking confirmed] Grill area on 03/03/2026. Usage fee: $50.00.
+email anna.scott@example.com | Booking rejected: Party room on 03/28/2026: monthly booking limit reached.
+sms +1 555-0102 | Morada: Booking confirmed
+push device-0103 | [Booking confirmed] Party room on 03/21/2026. Usage fee: $150.00.

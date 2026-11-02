@@ -1,0 +1,13 @@
+R-01;book;confirmed;$180.00
+R-02;book;rejected;time slot overlaps R-01
+R-03;book;confirmed;$180.00
+R-04;book;rejected;minimum notice not met
+R-05;book;rejected;unit's monthly limit reached
+R-06;book;confirmed;$60.00
+R-03;cancel;canceled;no cancellation fee
+R-07;book;rejected;time slot overlaps R-06
+R-01;cancel;canceled;cancellation fee $90.00
+R-08;book;confirmed;$180.00
+R-01;cancel;not canceled;booking is not confirmed
+R-09;book;rejected;invalid time slot: the end must be after the start
+R-99;cancel;not canceled;booking not found

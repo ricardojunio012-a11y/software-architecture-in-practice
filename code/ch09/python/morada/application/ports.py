@@ -1,0 +1,26 @@
+# The ports of the hexagon. The inside defines both; the outside adapts.
+from typing import Protocol
+
+from morada.domain.schedule import Schedule
+
+
+# Inbound port: what the system offers, whoever drives it
+class BookingUseCases(Protocol):
+    def list_spaces(self) -> list[dict]: ...
+
+    def book(self, request: dict) -> dict: ...
+
+    def cancel(self, booking: str, requested_on: str) -> dict: ...
+
+    def bookings_for_space(self, space: str) -> list[dict]: ...
+
+
+# Outbound port: what the system needs to keep the schedules
+class ScheduleRepository(Protocol):
+    def all(self) -> list[Schedule]: ...
+
+    def for_space(self, space: str) -> Schedule: ...
+
+    def for_booking(self, booking: str) -> Schedule: ...
+
+    def save(self, schedule: Schedule) -> None: ...

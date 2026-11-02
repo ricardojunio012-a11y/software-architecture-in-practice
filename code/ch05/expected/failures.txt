@@ -1,0 +1,2 @@
+BookingRejected R-02: NotifyResident: email failed without retry (no such address)
+BookingRejected R-05: NotifyResident: sms failed after 3 attempts

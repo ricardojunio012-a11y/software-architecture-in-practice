@@ -1,0 +1,7 @@
+P-01 saved with E-P-01 in the outbox
+P-02 saved with E-P-02 in the outbox
+P-03 saved with E-P-03 in the outbox
+relay published E-P-01
+relay published E-P-02
+relay published E-P-03 and crashed before marking
+relay published E-P-03

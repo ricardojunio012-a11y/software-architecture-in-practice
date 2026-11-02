@@ -1,0 +1,15 @@
+tablet A opened: packages [P-01, P-02, P-03], expected visitors [Anna, Brian]
+tablet B opened: packages [P-01, P-02, P-03], expected visitors [Anna, Brian]
+tablet A lost the internet
+tablet A stored op-A1 (deliver P-01) in the local queue
+tablet A stored op-A2 (registerVisitor Anna) in the local queue
+tablet A stored op-A3 (deliver P-02) in the local queue
+tablet B sent op-B1 (return P-02): applied
+tablet B sent op-B2 (deliver P-03): applied
+tablet A came back and sent 3 operations; the response was lost
+the BFF restarted: what was only in its memory is gone
+tablet A resent 3 operations:
+  op-A1 (deliver P-01): applied
+  op-A2 (registerVisitor Anna): applied
+  op-A3 (deliver P-02): conflict: P-02 already returned by tablet B at 09:20
+tablet A opened: packages [], expected visitors [Brian]

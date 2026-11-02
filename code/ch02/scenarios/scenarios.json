@@ -1,0 +1,18 @@
+[
+  {
+    "id": "PERF-01",
+    "description": "Invoices available on the 1st, with 300 communities (2026)",
+    "communities": 300,
+    "unitsPerCommunity": 40,
+    "invoicesPerSecond": 50,
+    "limitSeconds": 14400
+  },
+  {
+    "id": "PERF-02",
+    "description": "Invoices available on the 1st, with 30,000 communities (2029)",
+    "communities": 30000,
+    "unitsPerCommunity": 40,
+    "invoicesPerSecond": 50,
+    "limitSeconds": 14400
+  }
+]

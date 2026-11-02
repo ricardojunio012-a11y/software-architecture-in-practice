@@ -1,0 +1,6 @@
+BookingConfirmed;R-01;party-room;2026-03-14 14:00-22:00;A-101;$180.00
+BookingConfirmed;R-03;party-room;2026-03-14 08:00-12:00;A-202;$180.00
+BookingConfirmed;R-06;grill-area;2026-03-15 10:00-14:00;B-202;$60.00
+BookingCanceled;R-03;no cancellation fee
+BookingCanceled;R-01;cancellation fee $90.00
+BookingConfirmed;R-08;party-room;2026-03-28 14:00-22:00;A-101;$180.00

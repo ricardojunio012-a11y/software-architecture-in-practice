@@ -1,0 +1,21 @@
+{
+  "spaces": [
+    { "id": "party-room", "feeCents": 15000, "minNoticeDays": 2, "monthlyLimit": 1 },
+    { "id": "grill-area", "feeCents": 5000, "minNoticeDays": 1, "monthlyLimit": 2 }
+  ],
+  "commands": [
+    { "type": "book", "booking": "R-01", "requestedOn": "2026-03-02", "unit": "A-101", "space": "party-room", "date": "2026-03-14", "start": 14, "end": 22 },
+    { "type": "book", "booking": "R-02", "requestedOn": "2026-03-02", "unit": "A-202", "space": "party-room", "date": "2026-03-14", "start": 20, "end": 23 },
+    { "type": "book", "booking": "R-03", "requestedOn": "2026-03-03", "unit": "A-202", "space": "party-room", "date": "2026-03-14", "start": 8, "end": 12 },
+    { "type": "book", "booking": "R-04", "requestedOn": "2026-03-03", "unit": "B-101", "space": "grill-area", "date": "2026-03-03", "start": 12, "end": 16 },
+    { "type": "book", "booking": "R-05", "requestedOn": "2026-03-04", "unit": "A-101", "space": "party-room", "date": "2026-03-28", "start": 14, "end": 22 },
+    { "type": "book", "booking": "R-06", "requestedOn": "2026-03-04", "unit": "B-202", "space": "grill-area", "date": "2026-03-15", "start": 10, "end": 14 },
+    { "type": "cancel", "booking": "R-03", "requestedOn": "2026-03-05" },
+    { "type": "book", "booking": "R-07", "requestedOn": "2026-03-06", "unit": "B-202", "space": "grill-area", "date": "2026-03-15", "start": 13, "end": 17 },
+    { "type": "cancel", "booking": "R-01", "requestedOn": "2026-03-13" },
+    { "type": "book", "booking": "R-08", "requestedOn": "2026-03-13", "unit": "A-101", "space": "party-room", "date": "2026-03-28", "start": 14, "end": 22 },
+    { "type": "cancel", "booking": "R-01", "requestedOn": "2026-03-13" },
+    { "type": "book", "booking": "R-09", "requestedOn": "2026-03-13", "unit": "B-101", "space": "grill-area", "date": "2026-03-20", "start": 18, "end": 16 },
+    { "type": "cancel", "booking": "R-99", "requestedOn": "2026-03-13" }
+  ]
+}

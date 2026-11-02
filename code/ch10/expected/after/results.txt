@@ -1,0 +1,11 @@
+C-01;issue;issued;A-101 $666.88 due 2026-02-10
+C-02;issue;issued;A-102 $666.88 due 2026-02-10
+C-03;issue;issued;B-101 $586.85 due 2026-02-10
+C-01;pay;paid;on 2026-02-08
+C-03;split;split;3 installments
+R-01;book;confirmed;A-101 party-room 2026-03-14
+R-02;book;rejected;unit A-102 in arrears
+R-03;book;confirmed;B-101 grill-area 2026-03-12
+C-02;pay;paid;on 2026-03-03
+R-04;book;confirmed;A-102 grill-area 2026-03-10
+R-05;book;rejected;party-room already booked on 2026-03-14

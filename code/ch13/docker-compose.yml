@@ -1,0 +1,20 @@
+# Chapter 13: front end, mobile, and Backend for Frontend.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs the morning at the front desk with both tablets always connected (online),
+  # with a tablet that loses the internet and syncs when it comes back (offline,
+  # restart, persisted), or the tests
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch13-${LANGUAGE:-node}
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch13
+    working_dir: /ch13

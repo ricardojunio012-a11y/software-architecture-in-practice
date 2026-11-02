@@ -1,0 +1,107 @@
+{
+  "packages": [
+    {
+      "id": "P-01",
+      "unit": "A-101"
+    },
+    {
+      "id": "P-02",
+      "unit": "B-202"
+    },
+    {
+      "id": "P-03",
+      "unit": "A-102"
+    }
+  ],
+  "guests": [
+    {
+      "booking": "R-01",
+      "unit": "A-101",
+      "space": "party-room",
+      "names": [
+        "Anna",
+        "Brian"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "tablet": "A",
+      "action": "open"
+    },
+    {
+      "tablet": "B",
+      "action": "open"
+    },
+    {
+      "tablet": "A",
+      "action": "disconnect",
+      "only": [
+        "offline",
+        "restart",
+        "persisted"
+      ]
+    },
+    {
+      "tablet": "A",
+      "action": "deliver",
+      "packageId": "P-01",
+      "time": "09:10"
+    },
+    {
+      "tablet": "A",
+      "action": "registerVisitor",
+      "name": "Anna",
+      "booking": "R-01",
+      "time": "09:12"
+    },
+    {
+      "tablet": "A",
+      "action": "deliver",
+      "packageId": "P-02",
+      "time": "09:15"
+    },
+    {
+      "tablet": "B",
+      "action": "return",
+      "packageId": "P-02",
+      "time": "09:20"
+    },
+    {
+      "tablet": "B",
+      "action": "deliver",
+      "packageId": "P-03",
+      "time": "09:25"
+    },
+    {
+      "tablet": "A",
+      "action": "reconnect",
+      "loseResponse": true,
+      "only": [
+        "offline",
+        "restart",
+        "persisted"
+      ]
+    },
+    {
+      "action": "restartBff",
+      "only": [
+        "restart",
+        "persisted"
+      ]
+    },
+    {
+      "tablet": "A",
+      "action": "resend",
+      "only": [
+        "offline",
+        "restart",
+        "persisted"
+      ]
+    },
+    {
+      "tablet": "A",
+      "action": "open"
+    }
+  ]
+}

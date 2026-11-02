@@ -1,0 +1,4 @@
+R-04;approved -> canceled
+R-04;error;cannot cancel a canceled booking
+R-02;error;cannot cancel a rejected booking
+R-99;error;booking R-99 not found

@@ -1,0 +1,39 @@
+{
+  "spaces": [
+    { "id": "party-room", "feeCents": 15000, "minNoticeDays": 2 },
+    { "id": "grill-area", "feeCents": 5000, "minNoticeDays": 1 }
+  ],
+  "requests": [
+    { "method": "GET", "path": "/spaces" },
+    {
+      "method": "POST",
+      "path": "/bookings",
+      "body": { "booking": "R-01", "unit": "A-101", "space": "party-room", "date": "2026-03-14", "start": 14, "end": 22, "requestedOn": "2026-03-02" }
+    },
+    {
+      "method": "POST",
+      "path": "/bookings",
+      "body": { "booking": "R-02", "unit": "A-202", "space": "party-room", "date": "2026-03-14", "start": 20, "end": 23, "requestedOn": "2026-03-02" }
+    },
+    {
+      "method": "POST",
+      "path": "/bookings",
+      "body": { "booking": "R-03", "space": "grill-area", "date": "2026-03-10", "start": 10, "end": 14, "requestedOn": "2026-03-02" }
+    },
+    {
+      "method": "POST",
+      "path": "/bookings",
+      "body": { "booking": "R-04", "unit": "B-101", "space": "grill-area", "date": "2026-03-03", "start": 10, "end": 14, "requestedOn": "2026-03-03" }
+    },
+    {
+      "method": "POST",
+      "path": "/bookings",
+      "body": { "booking": "R-05", "unit": "B-202", "space": "grill-area", "date": "2026-03-10", "start": 10, "end": 14, "requestedOn": "2026-03-02" }
+    },
+    { "method": "GET", "path": "/spaces/party-room/bookings" },
+    { "method": "DELETE", "path": "/bookings/R-01?on=2026-03-13" },
+    { "method": "DELETE", "path": "/bookings/R-99?on=2026-03-13" },
+    { "method": "GET", "path": "/spaces/pool/bookings" },
+    { "method": "GET", "path": "/spaces/grill-area/bookings" }
+  ]
+}

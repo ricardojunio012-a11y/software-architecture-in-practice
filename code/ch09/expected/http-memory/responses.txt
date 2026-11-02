@@ -1,0 +1,11 @@
+GET /spaces -> 200 [{"id":"party-room","fee":"$150.00","minNoticeDays":2},{"id":"grill-area","fee":"$50.00","minNoticeDays":1}]
+POST /bookings -> 201 {"booking":"R-01","status":"confirmed","fee":"$180.00"}
+POST /bookings -> 409 {"error":"time slot overlaps R-01"}
+POST /bookings -> 400 {"error":"required field: unit"}
+POST /bookings -> 409 {"error":"minimum notice not met"}
+POST /bookings -> 201 {"booking":"R-05","status":"confirmed","fee":"$50.00"}
+GET /spaces/party-room/bookings -> 200 [{"booking":"R-01","unit":"A-101","slot":"2026-03-14 14:00-22:00"}]
+DELETE /bookings/R-01?on=2026-03-13 -> 200 {"booking":"R-01","status":"canceled","cancellationFee":"$90.00"}
+DELETE /bookings/R-99?on=2026-03-13 -> 404 {"error":"booking not found"}
+GET /spaces/pool/bookings -> 404 {"error":"space not found"}
+GET /spaces/grill-area/bookings -> 200 [{"booking":"R-05","unit":"B-202","slot":"2026-03-10 10:00-14:00"}]

@@ -1,0 +1,16 @@
+{
+  "spaces": ["party-room", "grill-area"],
+  "commands": [
+    { "module": "billing", "type": "issue", "charge": "C-01", "unit": "A-101", "amountCents": 66688, "dueDate": "2026-02-10" },
+    { "module": "billing", "type": "issue", "charge": "C-02", "unit": "A-102", "amountCents": 66688, "dueDate": "2026-02-10" },
+    { "module": "billing", "type": "issue", "charge": "C-03", "unit": "B-101", "amountCents": 58685, "dueDate": "2026-02-10" },
+    { "module": "billing", "type": "pay", "charge": "C-01", "on": "2026-02-08" },
+    { "module": "billing", "type": "split", "charge": "C-03", "installments": 3, "on": "2026-02-20" },
+    { "module": "bookings", "type": "book", "booking": "R-01", "unit": "A-101", "space": "party-room", "date": "2026-03-14", "on": "2026-03-02" },
+    { "module": "bookings", "type": "book", "booking": "R-02", "unit": "A-102", "space": "grill-area", "date": "2026-03-10", "on": "2026-03-02" },
+    { "module": "bookings", "type": "book", "booking": "R-03", "unit": "B-101", "space": "grill-area", "date": "2026-03-12", "on": "2026-03-02" },
+    { "module": "billing", "type": "pay", "charge": "C-02", "on": "2026-03-03" },
+    { "module": "bookings", "type": "book", "booking": "R-04", "unit": "A-102", "space": "grill-area", "date": "2026-03-10", "on": "2026-03-03" },
+    { "module": "bookings", "type": "book", "booking": "R-05", "unit": "B-102", "space": "party-room", "date": "2026-03-14", "on": "2026-03-03" }
+  ]
+}

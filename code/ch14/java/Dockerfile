@@ -1,0 +1,9 @@
+FROM maven:3.9-eclipse-temurin-21
+WORKDIR /app
+COPY pom.xml ./
+RUN mvn -q dependency:go-offline
+COPY run.sh ./
+COPY src ./src
+# Builds and runs the tests once during the build: Maven downloads everything "tests" will use
+RUN mvn -q package
+ENTRYPOINT ["sh", "run.sh"]

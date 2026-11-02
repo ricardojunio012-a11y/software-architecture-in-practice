@@ -1,0 +1,10 @@
+# Financial report 03/2026 - Garden Court Condominiums
+income;monthly dues;4,850.00
+income;reserve fund;485.02
+expenses;Cleaning;1,200.00
+expenses;Front desk;2,100.00
+expenses;Electricity and water;950.00
+expenses;Maintenance;600.00
+expenses;total;4,850.00
+reserve;opening balance;12,000.00
+reserve;projected balance;12,485.02

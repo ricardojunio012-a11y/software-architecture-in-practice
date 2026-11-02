@@ -1,0 +1,8 @@
+to anna.scott@example.com: Booking R-01 confirmed. Amount: $180.00
+to carol.miller@example.com: Booking R-02 declined (arrears)
+to david.ross@example.com: Booking R-03 declined (conflict)
+to david.ross@example.com: Booking R-04 declined (short notice)
+to ellen.parker@example.com: Booking R-05 confirmed. Amount: $100.00
+to henry.adams@example.com: Booking R-06 confirmed. Amount: $200.00
+to anna.scott@example.com: Booking R-07 confirmed. Amount: $60.00
+to ellen.parker@example.com: Booking R-08 declined (conflict)

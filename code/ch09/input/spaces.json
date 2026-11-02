@@ -1,0 +1,14 @@
+{
+  "spaces": [
+    {
+      "id": "party-room",
+      "feeCents": 15000,
+      "minNoticeDays": 2
+    },
+    {
+      "id": "grill-area",
+      "feeCents": 5000,
+      "minNoticeDays": 1
+    }
+  ]
+}

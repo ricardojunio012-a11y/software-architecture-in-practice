@@ -1,0 +1,13 @@
+Simultaneous requests: Party room on 03/28/2026
+check, then save (check-then-act):
+  R-09 A-202: passed the chain
+  R-10 B-101: passed the chain
+  R-09 saved
+  R-10 saved
+  result: 2 bookings approved (double booking)
+save only if the space is free, in a single operation:
+  R-09 A-202: passed the chain
+  R-10 B-101: passed the chain
+  R-09 saved
+  R-10 rejected on save
+  result: 1 booking approved

@@ -1,0 +1,6 @@
+notices sent: 200
+network calls: 0
+error responses: 0
+retries: 0
+duplicate notices ignored: 0
+notices lost: 0

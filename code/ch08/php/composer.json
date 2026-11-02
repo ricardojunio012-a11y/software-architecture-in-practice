@@ -1,0 +1,13 @@
+{
+    "name": "morada/en-ch08",
+    "description": "Chapter 8: architectural styles",
+    "type": "project",
+    "require": {
+        "php": ">=8.3",
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

@@ -1,0 +1,71 @@
+{
+  "community": {
+    "id": "garden-court",
+    "name": "Garden Court Condominiums",
+    "monthlyExpensesCents": 485000
+  },
+  "units": [
+    {
+      "id": "A-101",
+      "shareMillionths": 125000,
+      "resident": { "name": "Anna Scott", "email": "anna.scott@example.com", "channel": "email" },
+      "paymentMethod": "invoice",
+      "pastDue": null
+    },
+    {
+      "id": "A-102",
+      "shareMillionths": 125000,
+      "resident": { "name": "Brian Lewis", "email": "brian.lewis@example.com", "channel": "email" },
+      "paymentMethod": "card",
+      "pastDue": null
+    },
+    {
+      "id": "A-201",
+      "shareMillionths": 125000,
+      "resident": { "name": "Carol Miller", "email": "carol.miller@example.com", "channel": "email" },
+      "paymentMethod": "invoice",
+      "pastDue": { "amountCents": 66750, "dueDate": "2026-02-10" }
+    },
+    {
+      "id": "A-202",
+      "shareMillionths": 125000,
+      "resident": {
+        "name": "David Ross", "email": "david.ross@example.com",
+        "phone": "+1 555-0101", "channel": "sms"
+      },
+      "paymentMethod": "card",
+      "pastDue": null
+    },
+    {
+      "id": "B-101",
+      "shareMillionths": 110000,
+      "resident": { "name": "Ellen Parker", "email": "ellen.parker@example.com", "channel": "email" },
+      "paymentMethod": "invoice",
+      "pastDue": null
+    },
+    {
+      "id": "B-102",
+      "shareMillionths": 110000,
+      "resident": {
+        "name": "Frank Nolan", "email": "frank.nolan@example.com",
+        "phone": "+1 555-0102", "channel": "sms"
+      },
+      "paymentMethod": "invoice",
+      "pastDue": { "amountCents": 59400, "dueDate": "2026-01-10" }
+    },
+    {
+      "id": "B-201",
+      "shareMillionths": 140000,
+      "resident": { "name": "Grace Turner", "email": "grace.turner@example.com", "channel": "email" },
+      "paymentMethod": "invoice",
+      "pastDue": null
+    },
+    {
+      "id": "B-202",
+      "shareMillionths": 140000,
+      "resident": { "name": "Henry Adams", "email": "henry.adams@example.com", "channel": "email" },
+      "paymentMethod": "card",
+      "pastDue": null
+    }
+  ]
+}

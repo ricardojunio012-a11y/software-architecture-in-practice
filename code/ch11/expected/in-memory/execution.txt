@@ -1,0 +1,3 @@
+P-01 confirmed; E-P-01 delivered in memory
+P-02 confirmed; E-P-02 delivered in memory
+P-03 confirmed; E-P-03 delivered in memory

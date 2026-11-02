@@ -1,0 +1,8 @@
+R-01;A-101;party-room;2026-03-14;approved;180.00
+R-02;A-201;party-room;2026-03-21;declined;arrears
+R-03;A-202;party-room;2026-03-14;declined;conflict
+R-04;A-202;grill-area;2026-03-03;declined;short notice
+R-05;B-101;grill-area;2026-03-15;approved;100.00
+R-06;B-202;party-room;2026-03-10;approved;200.00
+R-07;A-101;grill-area;2026-03-21;approved;60.00
+R-08;B-101;party-room;2026-03-10;declined;conflict

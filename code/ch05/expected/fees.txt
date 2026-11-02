@@ -1,0 +1,4 @@
+A-101;Usage fee: Party room on 03/14/2026;150.00
+A-202;Usage fee: Grill area on 03/03/2026;50.00
+B-101;Usage fee: Grill area on 03/07/2026;50.00
+B-202;Usage fee: Party room on 03/21/2026;150.00

@@ -1,0 +1,11 @@
+spaces
+book R-01 A-101 party-room 2026-03-14 14 22 2026-03-02
+book R-02 A-202 party-room 2026-03-14 20 23 2026-03-02
+book R-03 party-room 2026-03-20 10 12 2026-03-02
+book R-04 B-101 grill-area 2026-03-03 10 12 2026-03-03
+book R-05 B-202 grill-area 2026-03-10 10 14 2026-03-03
+bookings party-room
+cancel R-01 2026-03-13
+cancel R-99 2026-03-13
+bookings pool
+bookings grill-area

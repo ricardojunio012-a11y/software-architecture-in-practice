@@ -1,0 +1,17 @@
+{
+    "name": "morada/en-ch10",
+    "description": "Chapter 10: modular monolith",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "deptrac/deptrac": "4.7.0"
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.0"
+        }
+    }
+}

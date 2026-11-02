@@ -1,0 +1,5 @@
+# Delinquency 03/2026 - Garden Court Condominiums
+unit;resident;days;arrears;late_fee;interest;amount_due
+A-201;Carol Miller;20;667.50;13.35;4.45;685.30
+B-102;Frank Nolan;51;594.00;11.88;10.10;615.98
+total;;;1,261.50;25.23;14.55;1,301.28

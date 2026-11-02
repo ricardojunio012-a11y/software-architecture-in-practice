@@ -1,0 +1,36 @@
+# Chapter 14: test architecture.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # The consumer generates the contract and the provider verifies it; the unit,
+  # integration and end-to-end tests run here too
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch14-${LANGUAGE:-node}
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # A real database in a container for the integration and end-to-end tests
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch14
+    working_dir: /ch14

@@ -1,0 +1,4 @@
+bookings received E-P-01: R-01 confirmed
+bookings received E-P-03: R-03 confirmed
+communications received E-P-01: notified A-101
+communications received E-P-03: notified B-101

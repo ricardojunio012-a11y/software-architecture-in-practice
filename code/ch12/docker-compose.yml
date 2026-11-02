@@ -1,0 +1,38 @@
+# Chapter 12: microservices, when to use them and when not to.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # The monolith: sends the notices through the Communications module, in the same
+  # process (monolith version) or by calling the Communications service over the
+  # network (service version)
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch12-${LANGUAGE:-node}
+    environment:
+      COMMUNICATIONS_URL: http://communications:8080
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+    depends_on:
+      communications:
+        condition: service_healthy
+
+  # The Communications service, extracted from the monolith. Same image, another
+  # command. For the lab, it fails on purpose on some calls (FAILURES=yes).
+  communications:
+    build: ./${LANGUAGE:-node}
+    image: morada-en-ch12-${LANGUAGE:-node}
+    command: ["api"]
+    environment:
+      FAILURES: "yes"
+    healthcheck:
+      test: ["CMD", "sh", "run.sh", "health"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch12
+    working_dir: /ch12

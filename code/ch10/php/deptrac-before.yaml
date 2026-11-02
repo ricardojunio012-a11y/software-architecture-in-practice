@@ -1,0 +1,24 @@
+# Architecture test: the boundary rules between the modules of the monolith.
+deptrac:
+  paths:
+    - ./src/before
+  layers:
+    - name: Bookings
+      collectors:
+        - type: directory
+          value: src/before/modules/bookings/.*
+    - name: BillingApi
+      collectors:
+        - type: directory
+          value: src/before/modules/billing/api.php
+    - name: BillingInternal
+      collectors:
+        - type: directory
+          value: src/before/modules/billing/internal/.*
+  ruleset:
+    # Bookings may use only the public API of Billing, never its table
+    Bookings:
+      - BillingApi
+    BillingApi:
+      - BillingInternal
+    BillingInternal: ~

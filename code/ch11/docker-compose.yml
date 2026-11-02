@@ -1,0 +1,52 @@
+# Chapter 11: event-driven architecture.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs the in-memory, dual-write and outbox versions, or the tests
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch11-${LANGUAGE:-node}
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+      BROKER_URL: amqp://morada:morada@broker:5672
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
+
+  # Billing saves the payments (and the outbox table) here
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # The message broker: the events leave Billing and reach the Bookings and
+  # Communications queues
+  broker:
+    image: rabbitmq:4.0-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: morada
+      RABBITMQ_DEFAULT_PASS: morada
+    # Healthy when the AMQP port accepts connections. (Running rabbitmq-diagnostics
+    # here would create the Erlang cookie as root before the server, and it would not start.)
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 5672"]
+      interval: 3s
+      retries: 40
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch11
+    working_dir: /ch11

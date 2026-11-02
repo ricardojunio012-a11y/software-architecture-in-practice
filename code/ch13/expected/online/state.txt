@@ -1,0 +1,5 @@
+P-01 A-101: delivered by tablet A at 09:10
+P-02 B-202: delivered by tablet A at 09:15
+P-03 A-102: delivered by tablet B at 09:25
+Anna (R-01) entered at 09:12 on tablet A
+repeated operations ignored: 0

@@ -1,0 +1,10 @@
+# Charges 03/2026 - Garden Court Condominiums - due 03/10/2026
+unit;resident;dues;reserve;arrears;late_fee;interest;total;payment
+A-101;Anna Scott;606.25;60.63;0.00;0.00;0.00;666.88;INV-garden-court-202603-A-101-66688
+A-102;Brian Lewis;606.25;60.63;0.00;0.00;0.00;666.88;INV-garden-court-202603-A-102-66688
+A-201;Carol Miller;606.25;60.63;667.50;13.35;4.45;1,352.18;INV-garden-court-202603-A-201-135218
+A-202;David Ross;606.25;60.63;0.00;0.00;0.00;666.88;INV-garden-court-202603-A-202-66688
+B-101;Ellen Parker;533.50;53.35;0.00;0.00;0.00;586.85;INV-garden-court-202603-B-101-58685
+B-102;Frank Nolan;533.50;53.35;594.00;11.88;10.10;1,202.83;INV-garden-court-202603-B-102-120283
+B-201;Grace Turner;679.00;67.90;0.00;0.00;0.00;746.90;INV-garden-court-202603-B-201-74690
+B-202;Henry Adams;679.00;67.90;0.00;0.00;0.00;746.90;INV-garden-court-202603-B-202-74690

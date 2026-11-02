@@ -1,0 +1,8 @@
+tablet A opened: packages [P-01, P-02, P-03], expected visitors [Anna, Brian]
+tablet B opened: packages [P-01, P-02, P-03], expected visitors [Anna, Brian]
+tablet A sent op-A1 (deliver P-01): applied
+tablet A sent op-A2 (registerVisitor Anna): applied
+tablet A sent op-A3 (deliver P-02): applied
+tablet B sent op-B1 (return P-02): conflict: P-02 already delivered by tablet A at 09:15
+tablet B sent op-B2 (deliver P-03): applied
+tablet A opened: packages [], expected visitors [Brian]

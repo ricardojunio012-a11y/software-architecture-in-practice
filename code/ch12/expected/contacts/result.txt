@@ -1,0 +1,15 @@
+Querying the Directory API on every notice
+  calls to the Directory: 210 (10 failed)
+  notices sent right away: 190
+  notices held until the Directory came back: 10 (longest delay: 10 min)
+  notices sent to an outdated email: 0
+
+Contacts replica fed by events (lag of 2 min)
+  initial load: 50 contacts
+  ContactChanged events applied: 6
+  calls to the Directory: 0
+  notices sent right away: 200
+  notices held until the Directory came back: 0
+  notices sent to an outdated email: 2
+    E-P-062 to U-12: old email (changed at minute 61; in the replica, at 63)
+    E-P-141 to U-41: old email (changed at minute 140; in the replica, at 142)

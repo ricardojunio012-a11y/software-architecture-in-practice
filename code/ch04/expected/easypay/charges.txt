@@ -1,0 +1,58 @@
+# Charges 03/2026 - Garden Court Condominiums
+
+A-101 Anna Scott
+  Monthly dues                                606.25
+  Reserve fund (10%)                           60.63
+  Discount by 03/05 (5%)                      -30.31
+  Total                                       666.88
+  Total with discount by 03/05                636.57
+
+A-102 Brian Lewis
+  Monthly dues                                606.25
+  Reserve fund (10%)                           60.63
+  Discount by 03/05 (5%)                      -30.31
+  Total                                       666.88
+  Total with discount by 03/05                636.57
+
+A-201 Carol Miller
+  Monthly dues                                606.25
+  Reserve fund (10%)                           60.63
+  Past-due balance (due 02/10)                667.50
+  Late fee (2%)                                13.35
+  Interest (20 days)                            4.45
+  Total                                     1,352.18
+
+A-202 David Ross
+  Monthly dues                                606.25
+  Reserve fund (10%)                           60.63
+  Discount by 03/05 (5%)                      -30.31
+  Total                                       666.88
+  Total with discount by 03/05                636.57
+
+B-101 Ellen Parker
+  Monthly dues                                533.50
+  Reserve fund (10%)                           53.35
+  Discount by 03/05 (5%)                      -26.68
+  Total                                       586.85
+  Total with discount by 03/05                560.17
+
+B-102 Frank Nolan
+  Monthly dues                                533.50
+  Reserve fund (10%)                           53.35
+  Past-due balance (due 01/10)                594.00
+  Late fee (2%)                                11.88
+  Interest (51 days)                           10.10
+  Total                                     1,202.83
+
+B-201 Grace Turner
+  Monthly dues                                679.00
+  Reserve fund (10%)                           67.90
+  Board president exemption                  -679.00
+  Total                                        67.90
+
+B-202 Henry Adams
+  Monthly dues                                679.00
+  Reserve fund (10%)                           67.90
+  Discount by 03/05 (5%)                      -33.95
+  Total                                       746.90
+  Total with discount by 03/05                712.95

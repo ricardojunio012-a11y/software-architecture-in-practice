@@ -1,0 +1,20 @@
+# Chapter 8: architectural styles.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs the layered API, the core with plugins, or the tests of the chosen language
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch08-${LANGUAGE:-node}
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+      # The plugins live outside the image: a new plugin comes in without rebuilding the core
+      - ./${LANGUAGE:-node}/plugins:/app/plugins:ro
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch08
+    working_dir: /ch08

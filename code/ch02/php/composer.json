@@ -1,0 +1,11 @@
+{
+    "name": "morada/en-ch02",
+    "description": "Chapter 2: quality requirements",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

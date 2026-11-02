@@ -1,0 +1,6 @@
+R-01;A-101;party-room;2026-03-14;confirmed
+R-02;A-102;grill-area;2026-03-10;confirmed
+R-03;B-101;party-room;2026-03-21;confirmed
+A-101: payment P-01 of $180.00 received; booking R-01 confirmed
+A-102: payment P-02 of $50.00 received; booking R-02 confirmed
+B-101: payment P-03 of $180.00 received; booking R-03 confirmed

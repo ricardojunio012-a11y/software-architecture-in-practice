@@ -1,0 +1,7 @@
+plugins loaded: alpha, beta, easypay
+A-101;$666.88;alpha;ALPHA-00001
+A-102;$666.88;easypay;CARD-A102
+A-201;$1,352.18;beta;BETA/0001
+A-202;$666.88;alpha;ALPHA-00002
+B-101;$586.85;cedar;no plugin for bank cedar
+B-102;$1,202.83;beta;BETA/0002

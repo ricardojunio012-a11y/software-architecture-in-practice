@@ -1,0 +1,23 @@
+{
+  "spaces": [
+    { "id": "party-room", "name": "Party room", "fee": 15000 },
+    { "id": "grill-area", "name": "Grill area", "fee": 5000 }
+  ],
+  "units": [
+    { "id": "A-101", "email": "anna.scott@example.com", "inArrears": false },
+    { "id": "A-201", "email": "carol.miller@example.com", "inArrears": true },
+    { "id": "A-202", "email": "david.ross@example.com", "inArrears": false },
+    { "id": "B-101", "email": "ellen.parker@example.com", "inArrears": false },
+    { "id": "B-202", "email": "henry.adams@example.com", "inArrears": false }
+  ],
+  "requests": [
+    { "id": "R-01", "unit": "A-101", "space": "party-room", "date": "2026-03-14", "guests": 30 },
+    { "id": "R-02", "unit": "A-201", "space": "party-room", "date": "2026-03-21", "guests": 20 },
+    { "id": "R-03", "unit": "A-202", "space": "party-room", "date": "2026-03-14", "guests": 40 },
+    { "id": "R-04", "unit": "A-202", "space": "grill-area", "date": "2026-03-03", "guests": 10 },
+    { "id": "R-05", "unit": "B-101", "space": "grill-area", "date": "2026-03-15", "guests": 60 },
+    { "id": "R-06", "unit": "B-202", "space": "party-room", "date": "2026-03-10", "guests": 80 },
+    { "id": "R-07", "unit": "A-101", "space": "grill-area", "date": "2026-03-21", "guests": 12 },
+    { "id": "R-08", "unit": "B-101", "space": "party-room", "date": "2026-03-10", "guests": 10 }
+  ]
+}

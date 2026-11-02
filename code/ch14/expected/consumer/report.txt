@@ -1,0 +1,3 @@
+sending a new notice: the client understood
+resending a notice already sent: the client understood
+notice without text: the client understood

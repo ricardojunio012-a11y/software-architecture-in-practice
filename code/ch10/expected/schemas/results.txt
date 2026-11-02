@@ -1,0 +1,5 @@
+billing_app: table billing.charges loaded
+bookings_app, shortcut into billing.charges: rejected by the database [42501] permission denied for table charges
+bookings_app, API billing.unit_in_good_standing(B-101): accepted ({"in_good_standing":true})
+bookings_app, create a table in the Billing schema: rejected by the database [42501] permission denied for schema billing
+the monolith's single user, same shortcut: accepted ({"n":"1"})

@@ -1,0 +1,23 @@
+# Chapter 6: refactoring and legacy code.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs one step of the bookings module or the tests of the chosen language
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language image
+    image: morada-en-ch06-${LANGUAGE:-node}
+    environment:
+      TODAY: ${TODAY:-2026-03-02}
+    volumes:
+      - ./input:/data/input:ro
+      - ./expected:/data/expected:ro
+      - ./output:/data/output
+
+  # Compares the output with the approved result and measures the size of each step
+  tools:
+    build: ./tools
+    environment:
+      LANGUAGE: ${LANGUAGE:-node}
+    volumes:
+      - ./:/ch06
+    working_dir: /ch06

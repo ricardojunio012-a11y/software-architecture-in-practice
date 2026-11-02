@@ -1,0 +1,47 @@
+# Chapter 10: strategic DDD and the modular monolith.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Runs the before version (Bookings reads the Billing table) or the after version
+  # (Bookings uses the public API of Billing), the architecture test or the unit tests
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch10-${LANGUAGE:-node}
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+
+  # The hard part (TypeScript only): each module with its own schema and role in
+  # PostgreSQL. Always uses the Node image, whatever the language in .env.
+  schemas:
+    build: ./node
+    image: morada-en-ch10-node
+    command: schemas
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # No port published on the host: only the "schemas" service reaches it, over the
+  # internal network
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch10
+    working_dir: /ch10

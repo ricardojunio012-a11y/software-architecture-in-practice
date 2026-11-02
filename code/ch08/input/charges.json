@@ -1,0 +1,10 @@
+{
+  "charges": [
+    { "unit": "A-101", "amountCents": 66688, "bank": "alpha" },
+    { "unit": "A-102", "amountCents": 66688, "bank": "easypay" },
+    { "unit": "A-201", "amountCents": 135218, "bank": "beta" },
+    { "unit": "A-202", "amountCents": 66688, "bank": "alpha" },
+    { "unit": "B-101", "amountCents": 58685, "bank": "cedar" },
+    { "unit": "B-102", "amountCents": 120283, "bank": "beta" }
+  ]
+}

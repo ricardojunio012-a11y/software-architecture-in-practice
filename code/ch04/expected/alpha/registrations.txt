@@ -1,0 +1,10 @@
+# Registrations 03/2026 - Garden Court Condominiums - Alpha Bank
+unit;identifier;amount;discount
+A-101;invoice INV-0000001;666.88;30.31
+A-102;invoice INV-0000002;666.88;30.31
+A-201;invoice INV-0000003;1,352.18;0.00
+A-202;invoice INV-0000004;666.88;30.31
+B-101;invoice INV-0000005;586.85;26.68
+B-102;invoice INV-0000006;1,202.83;0.00
+B-201;invoice INV-0000007;67.90;0.00
+B-202;invoice INV-0000008;746.90;33.95

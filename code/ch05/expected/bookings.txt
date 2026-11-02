@@ -1,0 +1,8 @@
+R-01;A-101;party-room;2026-03-14;approved
+R-02;A-201;party-room;2026-03-21;rejected;unit in arrears
+R-03;A-202;party-room;2026-03-14;rejected;space already booked on this date
+R-04;A-202;grill-area;2026-03-03;approved
+R-05;B-101;party-room;2026-03-03;rejected;minimum notice of 2 days
+R-06;A-101;party-room;2026-03-28;rejected;monthly booking limit reached
+R-07;B-101;grill-area;2026-03-07;approved
+R-08;B-202;party-room;2026-03-21;approved

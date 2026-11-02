@@ -1,0 +1,23 @@
+# Chapter 4: SOLID and GRASP.
+# The language and the gateway come from the .env file (LANGUAGE=node|php|python|java, GATEWAY=alpha|easypay).
+services:
+  # Runs the "before" or "after" version of charge issuing, or the tests of the chosen language
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch04-${LANGUAGE:-node}
+    environment:
+      TODAY: ${TODAY:-2026-03-02}
+      GATEWAY: ${GATEWAY:-alpha}
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+
+  # Compares the output with the approved result for the chosen gateway
+  tools:
+    build: ./tools
+    environment:
+      GATEWAY: ${GATEWAY:-alpha}
+    volumes:
+      - ./:/ch04
+    working_dir: /ch04

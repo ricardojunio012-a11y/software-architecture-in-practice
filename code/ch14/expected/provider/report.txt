@@ -1,0 +1,3 @@
+sending a new notice: verified
+resending a notice already sent: verified
+notice without text: verified

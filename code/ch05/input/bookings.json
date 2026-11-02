@@ -1,0 +1,82 @@
+{
+  "spaces": [
+    {
+      "id": "party-room",
+      "name": "Party room",
+      "feeCents": 15000,
+      "minNoticeDays": 2,
+      "monthlyLimit": 1
+    },
+    {
+      "id": "grill-area",
+      "name": "Grill area",
+      "feeCents": 5000,
+      "minNoticeDays": 1,
+      "monthlyLimit": 2
+    }
+  ],
+  "units": [
+    {
+      "id": "A-101",
+      "inArrears": false,
+      "resident": { "name": "Anna Scott", "email": "anna.scott@example.com", "channel": "email" }
+    },
+    {
+      "id": "A-201",
+      "inArrears": true,
+      "resident": { "name": "Carol Miller", "email": "carol.miller@example.com", "channel": "email" }
+    },
+    {
+      "id": "A-202",
+      "inArrears": false,
+      "resident": {
+        "name": "David Ross",
+        "email": "david.ross@example.com",
+        "phone": "+1 555-0101",
+        "device": "device-0101",
+        "channel": "push"
+      }
+    },
+    {
+      "id": "B-101",
+      "inArrears": false,
+      "resident": {
+        "name": "Ellen Parker",
+        "email": "ellen.parker@example.com",
+        "phone": "+1 555-0102",
+        "channel": "sms"
+      }
+    },
+    {
+      "id": "B-202",
+      "inArrears": false,
+      "resident": {
+        "name": "Henry Adams",
+        "email": "henry.adams@example.com",
+        "phone": "+1 555-0103",
+        "device": "device-0103",
+        "channel": "push"
+      }
+    }
+  ],
+  "requests": [
+    { "id": "R-01", "unit": "A-101", "space": "party-room", "date": "2026-03-14" },
+    { "id": "R-02", "unit": "A-201", "space": "party-room", "date": "2026-03-21" },
+    { "id": "R-03", "unit": "A-202", "space": "party-room", "date": "2026-03-14" },
+    { "id": "R-04", "unit": "A-202", "space": "grill-area", "date": "2026-03-03" },
+    { "id": "R-05", "unit": "B-101", "space": "party-room", "date": "2026-03-03" },
+    { "id": "R-06", "unit": "A-101", "space": "party-room", "date": "2026-03-28" },
+    { "id": "R-07", "unit": "B-101", "space": "grill-area", "date": "2026-03-07" },
+    { "id": "R-08", "unit": "B-202", "space": "party-room", "date": "2026-03-21" }
+  ],
+  "simulatedFailures": {
+    "device-0101": 1,
+    "+1 555-0102": 5
+  },
+  "invalidDestinations": ["carol.miller@example.com"],
+  "cancellations": ["R-04", "R-04", "R-02", "R-99"],
+  "simultaneousRequests": [
+    { "id": "R-09", "unit": "A-202", "space": "party-room", "date": "2026-03-28" },
+    { "id": "R-10", "unit": "B-101", "space": "party-room", "date": "2026-03-28" }
+  ]
+}

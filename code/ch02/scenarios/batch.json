@@ -1,0 +1,13 @@
+{
+  "id": "PERF-02",
+  "description": "Batch creation of the invoices for the 1st, with 30,000 communities",
+  "invoices": 1200000,
+  "invoicesPerFile": 100000,
+  "invoicesPerSecond": 2000,
+  "returnSeconds": 5400,
+  "transientFailurePercent": 5,
+  "permanentRejectionEvery": 200,
+  "maxAttempts": 3,
+  "limitSeconds": 14400,
+  "seed": 2026
+}

@@ -1,0 +1,5 @@
+push to David Ross: wait 100 ms
+sms to Ellen Parker: wait 100 ms
+sms to Ellen Parker: wait 200 ms
+sms to Ellen Parker: wait 100 ms
+sms to Ellen Parker: wait 200 ms

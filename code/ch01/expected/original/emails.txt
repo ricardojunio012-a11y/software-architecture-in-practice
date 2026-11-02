@@ -1,0 +1,98 @@
+To: anna.scott@example.com
+Subject: Monthly dues 03/2026 - Garden Court Condominiums - Unit A-101
+
+Hello, Anna Scott.
+
+The monthly dues for 03/2026 for unit A-101 are now available.
+Amount: $666.88
+Due date: 03/10/2026
+Invoice: INV-garden-court-202603-A-101-66688
+
+Garden Court Condominiums Management
+----
+To: brian.lewis@example.com
+Subject: Monthly dues 03/2026 - Garden Court Condominiums - Unit A-102
+
+Hello, Brian Lewis.
+
+The monthly dues for 03/2026 for unit A-102 are now available.
+Amount: $666.88
+Due date: 03/10/2026
+Invoice: INV-garden-court-202603-A-102-66688
+
+Garden Court Condominiums Management
+----
+To: carol.miller@example.com
+Subject: Monthly dues 03/2026 - Garden Court Condominiums - Unit A-201
+
+Hello, Carol Miller.
+
+The monthly dues for 03/2026 for unit A-201 are now available.
+Amount: $1,352.18
+Due date: 03/10/2026
+Includes a past-due balance of $667.50, with a late fee of $13.35 and interest of $4.45.
+Invoice: INV-garden-court-202603-A-201-135218
+
+Garden Court Condominiums Management
+----
+To: david.ross@example.com
+Subject: Monthly dues 03/2026 - Garden Court Condominiums - Unit A-202
+
+Hello, David Ross.
+
+The monthly dues for 03/2026 for unit A-202 are now available.
+Amount: $666.88
+Due date: 03/10/2026
+Invoice: INV-garden-court-202603-A-202-66688
+
+Garden Court Condominiums Management
+----
+To: ellen.parker@example.com
+Subject: Monthly dues 03/2026 - Garden Court Condominiums - Unit B-101
+
+Hello, Ellen Parker.
+
+The monthly dues for 03/2026 for unit B-101 are now available.
+Amount: $586.85
+Due date: 03/10/2026
+Invoice: INV-garden-court-202603-B-101-58685
+
+Garden Court Condominiums Management
+----
+To: frank.nolan@example.com
+Subject: Monthly dues 03/2026 - Garden Court Condominiums - Unit B-102
+
+Hello, Frank Nolan.
+
+The monthly dues for 03/2026 for unit B-102 are now available.
+Amount: $1,202.83
+Due date: 03/10/2026
+Includes a past-due balance of $594.00, with a late fee of $11.88 and interest of $10.10.
+Invoice: INV-garden-court-202603-B-102-120283
+
+Garden Court Condominiums Management
+----
+To: grace.turner@example.com
+Subject: Monthly dues 03/2026 - Garden Court Condominiums - Unit B-201
+
+Hello, Grace Turner.
+
+The monthly dues for 03/2026 for unit B-201 are now available.
+Amount: $746.90
+Due date: 03/10/2026
+Invoice: INV-garden-court-202603-B-201-74690
+
+Garden Court Condominiums Management
+----
+To: henry.adams@example.com
+Subject: Monthly dues 03/2026 - Garden Court Condominiums - Unit B-202
+
+Hello, Henry Adams.
+
+The monthly dues for 03/2026 for unit B-202 are now available.
+Amount: $746.90
+Due date: 03/10/2026
+Invoice: INV-garden-court-202603-B-202-74690
+
+Garden Court Condominiums Management
+----

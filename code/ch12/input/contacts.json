@@ -1,0 +1,14 @@
+{
+  "units": 50,
+  "notices": 200,
+  "directoryDown": { "from": 100, "to": 109 },
+  "replicaLag": 2,
+  "changes": [
+    { "minute": 10, "unit": "U-30", "email": "new.u30@example.com" },
+    { "minute": 37, "unit": "U-40", "email": "new.u40@example.com" },
+    { "minute": 61, "unit": "U-12", "email": "new.u12@example.com" },
+    { "minute": 140, "unit": "U-41", "email": "new.u41@example.com" },
+    { "minute": 170, "unit": "U-05", "email": "new.u05@example.com" },
+    { "minute": 180, "unit": "U-33", "email": "new.u33@example.com" }
+  ]
+}

@@ -1,0 +1,16 @@
+PERF-02: Batch creation of the invoices for the 1st, with 30,000 communities (seed 2026)
+  assumptions: 1,200,000 invoices in files of 100,000, 2,000 per second,
+  return file 1 h 30 min after each file, 5% transient rejections, 1 in 200 permanent
+  estimate by division: 10 min  target: all within 4 h
+naive:
+  files: 36  creation attempts: 1,274,443
+  available at p50: 1 h 36 min  p95: 3 h 2 min  p99: 3 h 10 min  p99.9: never
+  last available: 4 h 40 min  never created: 6,142  by card: 0
+  within 4 h: 1,190,981 (99.25%)
+  result: FAILED
+adjusted:
+  files: 24  creation attempts: 1,259,424
+  available at p50: 1 h 36 min  p95: 1 h 40 min  p99: 3 h 8 min  p99.9: 3 h 10 min
+  last available: 3 h 10 min  never created: 0  by card: 9,019
+  within 4 h: 1,200,000 (100.00%)
+  result: PASSED
