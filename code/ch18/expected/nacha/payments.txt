@@ -1,0 +1,7 @@
+payments received:
+  C-202 paid on 2026-11-04: $450.00, fee $2.50
+  C-203 paid on 2026-11-04: $535.60, fee $2.50
+  C-205 paid on 2026-11-05: $380.00, fee $2.50
+entries that are not payments:
+  C-201: invoice accepted
+  C-204: canceled

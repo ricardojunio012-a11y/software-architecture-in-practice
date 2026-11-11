@@ -1,0 +1,16 @@
+the orchestrator crashed after the charge, before saving its progress
+saga completed
+calls to the billing service: 2
+orchestrator history:
+  completed: contract
+  resumed after 1 step(s)
+  completed: charge
+  completed: provisioning
+  completed: import
+  completed: welcome
+final state in the services:
+  contract:   signed
+  entries:    charge $890.00
+  tenant:     active
+  residents:  40
+  welcome:    sent to 40

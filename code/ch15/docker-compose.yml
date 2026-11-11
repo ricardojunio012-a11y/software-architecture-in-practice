@@ -1,0 +1,36 @@
+# Chapter 15: API design.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # Morada's public API, the request script and the contract tools
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch15-${LANGUAGE:-node}
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+    volumes:
+      - ./input:/data/input:ro
+      - ./openapi:/data/openapi:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Charges, payments and idempotency keys
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch15
+    working_dir: /ch15

@@ -1,0 +1,28 @@
+1. board president's report for community 12, without RLS
+   community 12 | unit 101 | Anna Reed | $450.00
+   community 12 | unit 204 | Carol Nash | $520.00
+   community 15 | unit 11 | Derek Rhodes | $380.00  <- another community
+   community 15 | unit 12 | Ellen Parker | $380.00  <- another community
+   community 20 | unit A-3 | Frank Cole | $610.00  <- another community
+   rows from other communities: 3
+
+2. the same report, with RLS
+   community 12 | unit 101 | Anna Reed | $450.00
+   community 12 | unit 204 | Carol Nash | $520.00
+   rows from other communities: 0
+
+3. with RLS, in a transaction with no community set
+   no rows
+   rows from other communities: 0
+
+4. with RLS, community 12 tries to write a charge for community 15
+   rejected by the database: the row fails the RLS policy
+5. with RLS, management company 3, which manages communities 12 and 15
+   community 12 | unit 101 | Anna Reed | $450.00
+   community 12 | unit 204 | Carol Nash | $520.00
+   community 15 | unit 11 | Derek Rhodes | $380.00
+   community 15 | unit 12 | Ellen Parker | $380.00
+   rows from other communities: 0
+
+6. with RLS, management company 3 tries to write a charge for community 20
+   rejected by the database: the row fails every policy

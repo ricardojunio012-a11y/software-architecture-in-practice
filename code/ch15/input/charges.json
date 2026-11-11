@@ -1,0 +1,42 @@
+[
+  {
+    "id": "CH-01",
+    "community": "C-01",
+    "unit": "101",
+    "dueDate": "2026-09-10",
+    "amountCents": 45000,
+    "status": "paid"
+  },
+  {
+    "id": "CH-02",
+    "community": "C-01",
+    "unit": "102",
+    "dueDate": "2026-10-10",
+    "amountCents": 45000,
+    "status": "open"
+  },
+  {
+    "id": "CH-03",
+    "community": "C-01",
+    "unit": "103",
+    "dueDate": "2026-10-10",
+    "amountCents": 52000,
+    "status": "open"
+  },
+  {
+    "id": "CH-04",
+    "community": "C-01",
+    "unit": "104",
+    "dueDate": "2026-10-10",
+    "amountCents": 45000,
+    "status": "open"
+  },
+  {
+    "id": "CH-05",
+    "community": "C-02",
+    "unit": "201",
+    "dueDate": "2026-10-05",
+    "amountCents": 38000,
+    "status": "open"
+  }
+]

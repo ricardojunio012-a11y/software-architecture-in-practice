@@ -1,0 +1,8 @@
+gateway: normal until 1 s, down until 4 s, unstable until 6 s
+                            notices in 200 ms  longest wait    payments     calls
+no protection                       88 of 300       4250 ms   64 of 120       120
++ 300 ms timeout                   300 of 300          5 ms   43 of 120       120
++ 3 attempts with jitter           185 of 300        708 ms   74 of 120       249
++ circuit breaker                  300 of 300        101 ms   52 of 120       103
++ bulkhead with 4 slots            300 of 300          5 ms   39 of 120        79
+bulkhead only                      300 of 300          5 ms   20 of 120        24

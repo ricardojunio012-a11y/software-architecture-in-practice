@@ -1,0 +1,32 @@
+# Chapter 30: distributed transactions and sagas.
+services:
+  # The onboarding of a new community, across four services, coordinated by a saga
+  app:
+    build: ./node
+    image: morada-en-ch30-node
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+    volumes:
+      - ./sql:/data/sql:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch30
+    working_dir: /ch30

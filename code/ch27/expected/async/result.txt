@@ -1,0 +1,9 @@
+asynchronous replication
+before: leader 22:00, replica 22:00
+the network between the leader and the replica is cut
+write on the leader: confirmed
+read on the leader: 23:00
+read on the replica: 22:00 (stale)
+the network comes back
+the replica catches up with the leader
+after: leader 23:00, replica 23:00

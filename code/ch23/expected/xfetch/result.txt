@@ -1,0 +1,3 @@
+3,000 requests in 300 s, TTL of 60 s, generation takes 2 s
+fixed expiration 100 report generations, 100 requests with no valid value in the cache
+XFetch           28 report generations, 20 requests with no valid value in the cache

@@ -1,0 +1,5 @@
+version: fixed
+route: GET /communities/7/delinquent
+database queries per request: 1
+units in the response: 120, 86 with an open balance
+response digest (sha256): fdecb1d7cd6b

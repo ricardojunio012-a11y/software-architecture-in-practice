@@ -1,0 +1,55 @@
+# Chapter 24: scaling the database.
+services:
+  # The primary takes the writes; the replica takes the reads, with a delay
+  primary:
+    image: postgres:17-alpine
+    command: ["postgres", "-c", "wal_level=replica", "-c", "max_wal_senders=5"]
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    volumes:
+      - ./db/primary.sh:/docker-entrypoint-initdb.d/primary.sh:ro
+    healthcheck:
+      # Over the network: during initialization, the temporary server only listens on the
+      # local socket
+      test: ["CMD", "pg_isready", "-U", "morada", "-h", "127.0.0.1"]
+      interval: 2s
+      retries: 30
+
+  replica:
+    image: postgres:17-alpine
+    entrypoint: ["sh", "/replica.sh"]
+    environment:
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - ./db/replica.sh:/replica.sh:ro
+    depends_on:
+      primary:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 60
+
+  app:
+    build: ./node
+    image: morada-en-ch24-node
+    environment:
+      PRIMARY_URL: postgresql://morada:morada@primary:5432/morada
+      REPLICA_URL: postgresql://morada:morada@replica:5432/morada
+      # The lab's shards are three databases on the same server
+      SHARDS_URL: postgresql://morada:morada@primary:5432/
+    volumes:
+      - ./sql:/data/sql:ro
+      - ./output:/data/output
+    depends_on:
+      replica:
+        condition: service_healthy
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch24
+    working_dir: /ch24

@@ -1,0 +1,16 @@
+# Chapter 29: resilience and failure modes.
+services:
+  # The payment gateway goes down and then turns unstable; Morada adds the protections
+  # one at a time. Everything runs on a simulated clock, with no real waiting
+  app:
+    build: ./node
+    image: morada-en-ch29-node
+    volumes:
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch29
+    working_dir: /ch29

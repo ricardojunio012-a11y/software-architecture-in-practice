@@ -1,0 +1,77 @@
+1. first page of the open charges
+   GET /v1/communities/C-01/charges?status=open&limit=2 (Morada-Management-Company: MC-A)
+   → 200 application/json
+   {"data":[{"id":"CH-02","unit":"102","dueDate":"2026-10-10","amountCents":45000,"status":"open"},{"id":"CH-03","unit":"103","dueDate":"2026-10-10","amountCents":52000,"status":"open"}],"next":"Q0gtMDM"}
+
+2. second page, with the cursor from the first
+   GET /v1/communities/C-01/charges?status=open&limit=2&cursor=Q0gtMDM (Morada-Management-Company: MC-A)
+   → 200 application/json
+   {"data":[{"id":"CH-04","unit":"104","dueDate":"2026-10-10","amountCents":45000,"status":"open"}],"next":null}
+
+3. limit out of range
+   GET /v1/communities/C-01/charges?limit=500 (Morada-Management-Company: MC-A)
+   → 400 application/problem+json
+   {"type":"https://api.morada.example/problems/invalid-limit","title":"Invalid limit","status":400,"detail":"limit must be between 1 and 100, got 500"}
+
+4. community that does not exist
+   GET /v1/communities/C-99/charges (Morada-Management-Company: MC-A)
+   → 404 application/problem+json
+   {"type":"https://api.morada.example/problems/community-not-found","title":"Community not found","status":404,"detail":"community C-99 does not exist"}
+
+5. payment of charge CH-02
+   POST /v1/payments (Morada-Management-Company: MC-A, Idempotency-Key: 8d1f-01)
+   {"charge":"CH-02","amountCents":45000}
+   → 201 application/json
+   {"id":"PAY-0001","charge":"CH-02","amountCents":45000,"status":"confirmed"}
+
+6. the same request, retried after a timeout
+   POST /v1/payments (Morada-Management-Company: MC-A, Idempotency-Key: 8d1f-01)
+   {"charge":"CH-02","amountCents":45000}
+   → 201 application/json
+   {"id":"PAY-0001","charge":"CH-02","amountCents":45000,"status":"confirmed"}
+
+7. the same key with a different amount
+   POST /v1/payments (Morada-Management-Company: MC-A, Idempotency-Key: 8d1f-01)
+   {"charge":"CH-02","amountCents":40000}
+   → 422 application/problem+json
+   {"type":"https://api.morada.example/problems/key-reused","title":"Idempotency key reused","status":422,"detail":"key 8d1f-01 was already used with a different request"}
+
+8. payment without an idempotency key
+   POST /v1/payments (Morada-Management-Company: MC-A)
+   {"charge":"CH-03","amountCents":52000}
+   → 400 application/problem+json
+   {"type":"https://api.morada.example/problems/missing-key","title":"Missing idempotency key","status":400,"detail":"send the Idempotency-Key header with a unique request identifier"}
+
+9. another key for the charge already paid
+   POST /v1/payments (Morada-Management-Company: MC-A, Idempotency-Key: 8d1f-02)
+   {"charge":"CH-02","amountCents":45000}
+   → 409 application/problem+json
+   {"type":"https://api.morada.example/problems/charge-already-paid","title":"Charge already paid","status":409,"detail":"charge CH-02 has already been paid"}
+
+10. amount different from the charge amount
+   POST /v1/payments (Morada-Management-Company: MC-A, Idempotency-Key: 8d1f-03)
+   {"charge":"CH-03","amountCents":50000}
+   → 422 application/problem+json
+   {"type":"https://api.morada.example/problems/amount-mismatch","title":"Amount mismatch","status":422,"detail":"charge CH-03 is 52000 cents, and the payment stated 50000"}
+
+11. another management company asks for the charges of C-01
+   GET /v1/communities/C-01/charges (Morada-Management-Company: MC-B)
+   → 404 application/problem+json
+   {"type":"https://api.morada.example/problems/community-not-found","title":"Community not found","status":404,"detail":"community C-01 does not exist"}
+
+12. another management company tries to pay a charge of C-01
+   POST /v1/payments (Morada-Management-Company: MC-B, Idempotency-Key: 5c2e-01)
+   {"charge":"CH-03","amountCents":52000}
+   → 422 application/problem+json
+   {"type":"https://api.morada.example/problems/charge-not-found","title":"Charge not found","status":422,"detail":"charge CH-03 does not exist"}
+
+13. another management company uses the first one's key, with its own request
+   POST /v1/payments (Morada-Management-Company: MC-B, Idempotency-Key: 8d1f-01)
+   {"charge":"CH-05","amountCents":38000}
+   → 201 application/json
+   {"id":"PAY-0002","charge":"CH-05","amountCents":38000,"status":"confirmed"}
+
+14. request without identifying the management company
+   GET /v1/communities/C-01/charges
+   → 401 application/problem+json
+   {"type":"https://api.morada.example/problems/unauthenticated","title":"Client not identified","status":401,"detail":"send the access token (here, the Morada-Management-Company header)"}

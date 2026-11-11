@@ -1,0 +1,15 @@
+{
+  "description": "Questions asked of the Board President's Assistant, in the order they arrive. Community 20 has a small daily budget, to show the cost limit.",
+  "dailyTokenBudget": { "12": 2000, "15": 2000, "20": 250 },
+  "questions": [
+    { "community": 12, "question": "What are the quiet hours?" },
+    { "community": 12, "question": "What are the quiet hours?" },
+    { "community": 12, "question": "What is the party room reservation fee?" },
+    { "community": 12, "question": "When is the grill open?" },
+    { "community": 15, "question": "Are the monthly dues waived?" },
+    { "community": 15, "question": "Can I move in on Saturday?" },
+    { "community": 20, "question": "What are the gym hours?" },
+    { "community": 20, "question": "How many bikes can I store in the bike room?" },
+    { "community": 20, "question": "What are the quiet hours?" }
+  ]
+}

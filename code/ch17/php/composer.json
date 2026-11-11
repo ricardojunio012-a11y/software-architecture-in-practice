@@ -1,0 +1,11 @@
+{
+    "name": "morada/ch17",
+    "description": "Chapter 17: multi-tenancy in SaaS",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

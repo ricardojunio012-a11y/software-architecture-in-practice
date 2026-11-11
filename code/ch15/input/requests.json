@@ -1,0 +1,100 @@
+[
+  {
+    "description": "first page of the open charges",
+    "method": "GET",
+    "path": "/v1/communities/C-01/charges?status=open&limit=2",
+    "managementCompany": "MC-A"
+  },
+  {
+    "description": "second page, with the cursor from the first",
+    "method": "GET",
+    "path": "/v1/communities/C-01/charges?status=open&limit=2&cursor=Q0gtMDM",
+    "managementCompany": "MC-A"
+  },
+  {
+    "description": "limit out of range",
+    "method": "GET",
+    "path": "/v1/communities/C-01/charges?limit=500",
+    "managementCompany": "MC-A"
+  },
+  {
+    "description": "community that does not exist",
+    "method": "GET",
+    "path": "/v1/communities/C-99/charges",
+    "managementCompany": "MC-A"
+  },
+  {
+    "description": "payment of charge CH-02",
+    "method": "POST",
+    "path": "/v1/payments",
+    "managementCompany": "MC-A",
+    "key": "8d1f-01",
+    "body": { "charge": "CH-02", "amountCents": 45000 }
+  },
+  {
+    "description": "the same request, retried after a timeout",
+    "method": "POST",
+    "path": "/v1/payments",
+    "managementCompany": "MC-A",
+    "key": "8d1f-01",
+    "body": { "charge": "CH-02", "amountCents": 45000 }
+  },
+  {
+    "description": "the same key with a different amount",
+    "method": "POST",
+    "path": "/v1/payments",
+    "managementCompany": "MC-A",
+    "key": "8d1f-01",
+    "body": { "charge": "CH-02", "amountCents": 40000 }
+  },
+  {
+    "description": "payment without an idempotency key",
+    "method": "POST",
+    "path": "/v1/payments",
+    "managementCompany": "MC-A",
+    "body": { "charge": "CH-03", "amountCents": 52000 }
+  },
+  {
+    "description": "another key for the charge already paid",
+    "method": "POST",
+    "path": "/v1/payments",
+    "managementCompany": "MC-A",
+    "key": "8d1f-02",
+    "body": { "charge": "CH-02", "amountCents": 45000 }
+  },
+  {
+    "description": "amount different from the charge amount",
+    "method": "POST",
+    "path": "/v1/payments",
+    "managementCompany": "MC-A",
+    "key": "8d1f-03",
+    "body": { "charge": "CH-03", "amountCents": 50000 }
+  },
+  {
+    "description": "another management company asks for the charges of C-01",
+    "method": "GET",
+    "path": "/v1/communities/C-01/charges",
+    "managementCompany": "MC-B"
+  },
+  {
+    "description": "another management company tries to pay a charge of C-01",
+    "method": "POST",
+    "path": "/v1/payments",
+    "managementCompany": "MC-B",
+    "key": "5c2e-01",
+    "body": { "charge": "CH-03", "amountCents": 52000 }
+  },
+  {
+    "description": "another management company uses the first one's key, with its own request",
+    "method": "POST",
+    "path": "/v1/payments",
+    "managementCompany": "MC-B",
+    "key": "8d1f-01",
+    "body": { "charge": "CH-05", "amountCents": 38000 }
+  },
+  {
+    "description": "request without identifying the management company",
+    "method": "GET",
+    "path": "/v1/communities/C-01/charges"
+  }
+]

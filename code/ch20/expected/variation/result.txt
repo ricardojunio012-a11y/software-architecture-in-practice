@@ -1,0 +1,26 @@
+run 1: by text 10 of 12, by content 11 of 12
+       [12] How much does it cost to reserve the party room?
+         answered: The party room must be reserved at least 15 days in advance, through the app. (house-rules)
+run 2: by text 9 of 12, by content 10 of 12
+       [12] How much does it cost to reserve the party room?
+         answered: I could not find this in the community's documents.
+       [15] Are the monthly dues waived?
+         answered: The April 2026 owners meeting kept the monthly dues unchanged and approved a 4% increase starting in July. (minutes-2026-04)
+run 3: by text 9 of 12, by content 11 of 12
+       [12] How much does it cost to reserve the party room?
+         answered: The party room must be reserved at least 15 days in advance, through the app. (house-rules)
+run 4: by text 8 of 12, by content 11 of 12
+       [12] How much does it cost to reserve the party room?
+         answered: I could not find this in the community's documents.
+run 5: by text 9 of 12, by content 10 of 12
+       [12] How much does it cost to reserve the party room?
+         answered: I could not find this in the community's documents.
+       [15] Are the monthly dues waived?
+         answered: The April 2026 owners meeting kept the monthly dues unchanged and approved a 4% increase starting in July. (minutes-2026-04)
+
+by text:    min 8, max 10, mean 9.0
+by content: min 10, max 11, mean 10.6
+
+cases that failed by content, in how many of the runs:
+  5 of 5  [12] How much does it cost to reserve the party room?
+  2 of 5  [15] Are the monthly dues waived?

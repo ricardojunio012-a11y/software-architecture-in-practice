@@ -1,0 +1,5 @@
+3,000 communities enqueued, 16 workers
+a worker died holding task 100
+a slow worker tried to complete task 200, already redone: blocked (ownership token)
+tasks done: 3,000; redone after the visibility timeout: 2
+invoices created: 329,895 (expected: 329,895)

@@ -1,0 +1,6 @@
+scenario: crash
+1 login
+after the 10th request: api2 stops accepting connections
+30 dashboard requests: 30 with status 200
+before the crash, requests per replica (including the login): 4, 4, 3
+after the crash: api2 served 0; api1 and api3 served 20

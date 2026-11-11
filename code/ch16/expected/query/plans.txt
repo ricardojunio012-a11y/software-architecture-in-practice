@@ -1,0 +1,8 @@
+1. no index
+   Seq Scan on charges: 22 rows kept, 999978 discarded
+
+2. index on due date only
+   Seq Scan on charges: 22 rows kept, 999978 discarded
+
+3. index from migration 003
+   Index Scan on charges using index charges_delinquency: 22 rows kept, 0 discarded

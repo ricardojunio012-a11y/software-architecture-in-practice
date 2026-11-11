@@ -1,0 +1,4 @@
+20 simultaneous requests for the grill area on Saturday afternoon
+  check-then-insert      more than one booking for the same slot
+  optimistic locking     1 booking; 19 requests rejected
+  exclusion constraint   1 booking; 19 requests rejected

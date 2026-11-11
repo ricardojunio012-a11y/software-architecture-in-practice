@@ -1,0 +1,14 @@
+[
+  {
+    "name": "replication",
+    "listen": "0.0.0.0:5433",
+    "upstream": "primary:5432",
+    "enabled": true
+  },
+  {
+    "name": "candidate",
+    "listen": "0.0.0.0:5434",
+    "upstream": "primary:5432",
+    "enabled": true
+  }
+]

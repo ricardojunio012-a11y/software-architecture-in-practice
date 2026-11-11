@@ -1,0 +1,2 @@
+14 responses checked against openapi/v1.yaml
+no discrepancies

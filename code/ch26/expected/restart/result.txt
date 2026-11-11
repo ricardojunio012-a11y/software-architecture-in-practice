@@ -1,0 +1,9 @@
+== queue in memory
+the device recorded 3 entries with no network and died (SIGKILL)
+entries in the queue after powering back on: 0
+the server received: none
+
+== queue in a SQLite file
+the device recorded 3 entries with no network and died (SIGKILL)
+entries in the queue after powering back on: 3
+the server received: 21, 22, 23

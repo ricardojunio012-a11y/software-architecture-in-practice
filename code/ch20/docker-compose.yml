@@ -1,0 +1,34 @@
+# Chapter 20: architecture of AI systems.
+services:
+  # The Board President's Assistant: RAG with pgvector, evaluation, cost, and isolation
+  app:
+    build: ./node
+    image: morada-en-ch20-node
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+    volumes:
+      - ./input:/data/input:ro
+      - ./sql:/data/sql:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # PostgreSQL with the pgvector extension
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch20
+    working_dir: /ch20

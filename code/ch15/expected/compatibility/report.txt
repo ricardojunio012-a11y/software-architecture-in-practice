@@ -1,0 +1,12 @@
+a-new-field.yaml: compatible
+  + GET /v1/communities/{community}/charges: new optional parameter: dueBy
+  + GET /v1/communities/{community}/charges 200: new field: data[].paymentUrl
+b-rename.yaml: INCOMPATIBLE
+  - GET /v1/communities/{community}/charges 200: field removed: data[].amountCents
+  + GET /v1/communities/{community}/charges 200: new field: data[].amount
+c-required.yaml: INCOMPATIBLE
+  - POST /v1/payments request: new required field: method
+d-enum.yaml: INCOMPATIBLE
+  - GET /v1/communities/{community}/charges 200: new enum value: data[].status = overdue
+
+incompatible proposals: 3 of 4

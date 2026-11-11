@@ -1,0 +1,37 @@
+# Chapter 17: multi-tenancy in SaaS.
+# The language comes from the .env file (LANGUAGE=node|php|python|java).
+services:
+  # The leak between communities and the fix with RLS; the noisy neighbor
+  app:
+    build: ./${LANGUAGE:-node}
+    # One image per language: changing .env does not reuse another language's image
+    image: morada-en-ch17-${LANGUAGE:-node}
+    environment:
+      # The administrator creates the tables; the application uses an unprivileged role
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+      APP_DATABASE_URL: postgresql://app_morada:app_morada@db:5432/morada
+    volumes:
+      - ./input:/data/input:ro
+      - ./sql:/data/sql:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch17
+    working_dir: /ch17

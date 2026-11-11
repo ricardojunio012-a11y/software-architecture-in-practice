@@ -1,0 +1,34 @@
+knowledge base: 17 chunks
+
+[12] What are the quiet hours?
+     Quiet hours are from 10 p.m. to 8 a.m., every day, and during that time no noise, loud music, or construction work is allowed. (house-rules)
+     origin: model, 127 tokens, 2 chunk(s) discarded
+[12] What are the quiet hours?
+     Quiet hours are from 10 p.m. to 8 a.m., every day, and during that time no noise, loud music, or construction work is allowed. (house-rules)
+     origin: cache, 0 tokens
+[12] What is the party room reservation fee?
+     The party room reservation fee is $180.00, billed on the next month's invoice. (house-rules)
+     origin: model, 157 tokens, 1 chunk(s) discarded
+[12] When is the grill open?
+     I could not find this in the community's documents.
+     origin: model, 0 tokens, 3 chunk(s) discarded
+[15] Are the monthly dues waived?
+     I could not find this in the community's documents.
+     origin: model, 101 tokens, 2 chunk(s) discarded
+[15] Can I move in on Saturday?
+     Move-ins may take place Monday through Saturday; on Saturday, a move may take place only until 2 p.m. (house-rules)
+     origin: model, 115 tokens, 2 chunk(s) discarded
+[20] What are the gym hours?
+     Gym hours are from 6 a.m. to 11 p.m., and children under 16 may use the gym only with a parent or guardian. (house-rules)
+     origin: model, 128 tokens, 1 chunk(s) discarded
+[20] How many bikes can I store in the bike room?
+     The bike room is free for residents to use, and each unit may store up to two bikes. (house-rules)
+     origin: model, 112 tokens, 2 chunk(s) discarded
+[20] What are the quiet hours?
+     The assistant's daily limit has been reached. Try again tomorrow.
+     origin: limit, 0 tokens, 2 chunk(s) discarded
+
+tokens spent today per community:
+  12: 284 of 2,000
+  15: 216 of 2,000
+  20: 240 of 250

@@ -1,0 +1,4 @@
+scenario: memory-session
+1 login
+9 dashboard requests: 3 with status 200, 6 with status 401
+requests per replica, including the login: 4, 3, 3

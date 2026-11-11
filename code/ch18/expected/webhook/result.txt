@@ -1,0 +1,21 @@
+== naive receiver
+msg_01: 200 applied: C-101 charge.paid
+msg_01: 200 applied: C-101 charge.paid
+msg_02: 200 applied: C-102 charge.paid
+msg_04: 200 applied: C-103 charge.refunded
+msg_03: 200 applied: C-103 charge.paid
+msg_05: 200 applied: C-104 charge.paid
+msg_06: 200 applied: C-105 charge.paid
+charges: C-101 paid | C-102 paid | C-103 paid | C-104 paid | C-105 paid
+payments recorded: 6, $2,860.00
+
+== robust receiver
+msg_01: 200 applied: C-101 charge.paid
+msg_01: 200 duplicate: ignored
+msg_02: 200 applied: C-102 charge.paid
+msg_04: 200 applied: C-103 charge.refunded
+msg_03: 200 ignored: version 2 is not newer than 3
+msg_05: 401 invalid signature
+msg_06: 401 outside the 5-minute window
+charges: C-101 paid | C-102 paid | C-103 refunded | C-104 open | C-105 refunded
+payments recorded: 2, $970.00

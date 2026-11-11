@@ -1,0 +1,13 @@
+{
+  "description": "One second of API requests: community 7 has a faulty integration that fires a request every 4 ms; the other four make a request every 100 ms.",
+  "durationMs": 1000,
+  "serviceMs": 10,
+  "clients": [
+    { "community": 1, "startMs": 1, "intervalMs": 100 },
+    { "community": 2, "startMs": 2, "intervalMs": 100 },
+    { "community": 3, "startMs": 3, "intervalMs": 100 },
+    { "community": 4, "startMs": 4, "intervalMs": 100 },
+    { "community": 7, "startMs": 0, "intervalMs": 4 }
+  ],
+  "limit": { "burst": 10, "perSecond": 20 }
+}

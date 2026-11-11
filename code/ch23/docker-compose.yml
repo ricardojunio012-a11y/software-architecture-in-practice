@@ -1,0 +1,38 @@
+# Chapter 23: caching and CDNs.
+services:
+  # The board president's financial dashboard, cached in Redis
+  app:
+    build: ./node
+    image: morada-en-ch23-node
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+      REDIS_URL: redis://redis:6379
+    volumes:
+      - ./sql:/data/sql:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  redis:
+    image: redis:7.4-alpine
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch23
+    working_dir: /ch23

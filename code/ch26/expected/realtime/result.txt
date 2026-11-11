@@ -1,0 +1,7 @@
+== without pub/sub between the replicas
+resident of A-101 (connected to api1): visitor for A-101: Carol (via api1)
+resident of B-202 (connected to api2): nothing
+
+== with pub/sub between the replicas
+resident of A-101 (connected to api1): visitor for A-101: Carol (via api1)
+resident of B-202 (connected to api2): visitor for B-202: David (via api2)

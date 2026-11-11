@@ -1,0 +1,48 @@
+# Chapter 26: real time and the edge.
+x-api: &api
+  build: ./node
+  image: morada-en-ch26-node
+  entrypoint: ["node", "--disable-warning=ExperimentalWarning", "src/api.ts"]
+  environment: &env
+    REDIS_URL: redis://redis:6379
+  depends_on:
+    - redis
+
+services:
+  # Two API replicas, each holding the WebSockets of the residents connected to it
+  api1:
+    <<: *api
+    environment: { <<: *env, NAME: api1 }
+  api2:
+    <<: *api
+    environment: { <<: *env, NAME: api2 }
+
+  # The pub/sub that links the replicas
+  redis:
+    image: redis:7.4-alpine
+
+  # The front desk's MQTT broker
+  mqtt:
+    image: eclipse-mosquitto:2.0.20
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+
+  # Runs the scenarios: residents, front-desk staff and the front-desk device
+  app:
+    build: ./node
+    image: morada-en-ch26-node
+    environment:
+      MQTT_URL: mqtt://mqtt:1883
+    volumes:
+      - ./output:/data/output
+    depends_on:
+      - api1
+      - api2
+      - mqtt
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch26
+    working_dir: /ch26

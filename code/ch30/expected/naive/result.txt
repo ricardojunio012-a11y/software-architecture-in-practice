@@ -1,0 +1,7 @@
+failed: line 37: invalid tax ID (123-74-108)
+final state in the services:
+  contract:   signed
+  entries:    charge $890.00
+  tenant:     active
+  residents:  0
+  welcome:    not sent

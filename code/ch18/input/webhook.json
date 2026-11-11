@@ -1,0 +1,52 @@
+{
+  "description": "Deliveries of the payment gateway webhook, in the order they reach Morada. The gateway signs each delivery in the Standard Webhooks format. 'fault' simulates what happens on the network: a resend of the same message, a delivery with a forged signature, and the replay of an old message.",
+  "secret": "whsec_bW9yYWRhLWdhdGV3YXktdGVzdC1zZWNyZXQ=",
+  "now": 1793880000,
+  "charges": [
+    { "charge": "C-101", "status": "open", "version": 1 },
+    { "charge": "C-102", "status": "open", "version": 1 },
+    { "charge": "C-103", "status": "open", "version": 1 },
+    { "charge": "C-104", "status": "open", "version": 1 },
+    { "charge": "C-105", "status": "refunded", "version": 3 }
+  ],
+  "deliveries": [
+    {
+      "id": "msg_01",
+      "secondsAgo": 40,
+      "event": { "type": "charge.paid", "charge": "C-101", "amountCents": 45000, "version": 2 }
+    },
+    {
+      "id": "msg_01",
+      "secondsAgo": 10,
+      "fault": "resend",
+      "event": { "type": "charge.paid", "charge": "C-101", "amountCents": 45000, "version": 2 }
+    },
+    {
+      "id": "msg_02",
+      "secondsAgo": 35,
+      "event": { "type": "charge.paid", "charge": "C-102", "amountCents": 52000, "version": 2 }
+    },
+    {
+      "id": "msg_04",
+      "secondsAgo": 20,
+      "event": { "type": "charge.refunded", "charge": "C-103", "amountCents": 38000, "version": 3 }
+    },
+    {
+      "id": "msg_03",
+      "secondsAgo": 30,
+      "event": { "type": "charge.paid", "charge": "C-103", "amountCents": 38000, "version": 2 }
+    },
+    {
+      "id": "msg_05",
+      "secondsAgo": 15,
+      "fault": "forged-signature",
+      "event": { "type": "charge.paid", "charge": "C-104", "amountCents": 61000, "version": 2 }
+    },
+    {
+      "id": "msg_06",
+      "secondsAgo": 3600,
+      "fault": "old-message",
+      "event": { "type": "charge.paid", "charge": "C-105", "amountCents": 45000, "version": 2 }
+    }
+  ]
+}

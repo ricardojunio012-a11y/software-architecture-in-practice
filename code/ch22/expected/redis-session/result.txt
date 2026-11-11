@@ -1,0 +1,4 @@
+scenario: redis-session
+1 login
+9 dashboard requests: 9 with status 200
+requests per replica, including the login: 4, 3, 3

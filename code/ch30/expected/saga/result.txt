@@ -1,0 +1,15 @@
+saga compensated
+orchestrator history:
+  completed: contract
+  completed: charge
+  completed: provisioning
+  import failed: line 37: invalid tax ID (123-74-108)
+  compensated: provisioning
+  compensated: charge
+  compensated: contract
+final state in the services:
+  contract:   canceled
+  entries:    charge $890.00; reversal $890.00
+  tenant:     deactivated
+  residents:  0
+  welcome:    not sent

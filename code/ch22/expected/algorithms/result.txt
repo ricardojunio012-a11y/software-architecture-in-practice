@@ -1,0 +1,5 @@
+20,000 requests, 3 servers (the third twice as slow)
+round robin:                median 13 ms, p99 714 ms
+least connections:          median 11 ms, p99 146 ms
+two random choices:         median 13 ms, p99 216 ms
+community hash:             median 20 ms, p99 329 ms

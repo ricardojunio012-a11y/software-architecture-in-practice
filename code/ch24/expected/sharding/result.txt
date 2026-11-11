@@ -1,0 +1,10 @@
+27 charges from 9 communities in 3 databases
+  shard0: 9 charges, communities 1, 2, 3
+  shard1: 12 charges, communities 4, 5, 6, 7
+  shard2: 6 charges, communities 8, 9
+charges for community 7: 3, querying only shard1
+open across all communities: $4,050.00, querying 3 databases
+an ID from community 7: 215620780032007186
+  created at 2026-10-25T12:00:00.000Z, logical shard 7, sequence 18
+logical shard 7 moved to shard2 (3 charges copied)
+charges for community 7: 3, querying only shard2

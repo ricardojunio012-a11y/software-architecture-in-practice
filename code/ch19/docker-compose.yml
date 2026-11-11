@@ -1,0 +1,36 @@
+# Chapter 19: analytical data architecture.
+services:
+  # The ELT pipeline: from Morada's PostgreSQL to a DuckDB analytics database
+  app:
+    build: ./node
+    image: morada-en-ch19-node
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+      # Pseudonymization key: in the real world, in a secrets vault (chapter 36)
+      PSEUDONYM_KEY: lab-test-key
+    volumes:
+      - ./input:/data/input:ro
+      - ./sql:/data/sql:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Morada's transactional database (OLTP)
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch19
+    working_dir: /ch19

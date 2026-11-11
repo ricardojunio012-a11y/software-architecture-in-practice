@@ -1,0 +1,13 @@
+== no limit
+community 1: 10 requests, 10 served, 0 rejected, average wait 864 ms, max 1719 ms
+community 2: 10 requests, 10 served, 0 rejected, average wait 873 ms, max 1728 ms
+community 3: 10 requests, 10 served, 0 rejected, average wait 882 ms, max 1737 ms
+community 4: 10 requests, 10 served, 0 rejected, average wait 891 ms, max 1746 ms
+community 7: 250 requests, 250 served, 0 rejected, average wait 965 ms, max 1894 ms
+
+== with a per-community limit (burst of 10, 20 per second)
+community 1: 10 requests, 10 served, 0 rejected, average wait 15 ms, max 59 ms
+community 2: 10 requests, 10 served, 0 rejected, average wait 24 ms, max 68 ms
+community 3: 10 requests, 10 served, 0 rejected, average wait 33 ms, max 77 ms
+community 4: 10 requests, 10 served, 0 rejected, average wait 42 ms, max 86 ms
+community 7: 250 requests, 29 served, 221 rejected, average wait 28 ms, max 94 ms

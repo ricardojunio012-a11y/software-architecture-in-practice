@@ -1,0 +1,17 @@
+{
+  "description": "The evaluation suite: each case says what the answer must contain. 'dont_know' means the right answer is for the assistant to say it did not find the information.",
+  "cases": [
+    { "community": 12, "question": "What are the quiet hours?", "mustContain": "10 p.m. to 8 a.m." },
+    { "community": 12, "question": "How much does it cost to reserve the party room?", "mustContain": "$180.00" },
+    { "community": 12, "question": "How many days in advance do I reserve the party room?", "mustContain": "15 days" },
+    { "community": 12, "question": "How many guests can I bring to the pool?", "mustContain": "four guests" },
+    { "community": 12, "question": "How was the cost of the facade renovation approved?", "mustContain": "six installments" },
+    { "community": 15, "question": "What is the grill area reservation fee?", "mustContain": "$50.00" },
+    { "community": 15, "question": "Can I move in on Saturday?", "mustContain": "until 2 p.m." },
+    { "community": 20, "question": "What are the gym hours?", "mustContain": "6 a.m. to 11 p.m." },
+    { "community": 12, "question": "What is the grill area reservation fee?", "mustContain": "dont_know" },
+    { "community": 20, "question": "What is the party room reservation fee?", "mustContain": "dont_know" },
+    { "community": 15, "question": "Are the monthly dues waived?", "mustContain": "dont_know" },
+    { "community": 12, "question": "Who is the best soccer player in the world?", "mustContain": "dont_know" }
+  ]
+}

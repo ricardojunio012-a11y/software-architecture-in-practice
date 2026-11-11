@@ -1,0 +1,11 @@
+promotion during the partition
+before: leader 22:00, candidate 22:00
+the network between the leader and the candidate is cut
+write on the old leader (23:00): confirmed to the board president
+the candidate is promoted to leader: yes
+write on the new leader (21:00): confirmed to another user
+two leaders: the old one says 23:00, the new one says 21:00
+the network comes back
+did the candidate go back to following the old leader? no (it is on a new timeline)
+the system now follows the new leader: 21:00
+the 23:00 write, confirmed to the board president, is lost

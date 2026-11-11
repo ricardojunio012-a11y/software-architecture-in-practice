@@ -1,0 +1,8 @@
+200 concurrent requests, with the key not in the cache:
+  no protection           200 database queries, all responses identical
+  shared promise            1 database query, all responses identical
+  lock in Redis             1 database query, all responses identical
+
+lock with a 100 ms TTL and a 200 ms load:
+  delete without checking  A deleted B's lock
+  compare and delete (Lua) B's lock still belongs to B

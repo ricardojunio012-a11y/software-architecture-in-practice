@@ -1,0 +1,4 @@
+1st request: received $48,600.00, outstanding $5,400.00 (queries: 1)
+5 more requests, from the cache (queries: 1)
+without invalidating: received $48,600.00, outstanding $5,400.00 (stale)
+after invalidating: received $49,050.00, outstanding $4,950.00 (queries: 2)

@@ -1,0 +1,32 @@
+# Chapter 25: asynchronous processing and queues in system design.
+services:
+  # Monthly invoice generation: a queue in PostgreSQL and workers that consume it
+  app:
+    build: ./node
+    image: morada-en-ch25-node
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+    volumes:
+      - ./sql:/data/sql:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch25
+    working_dir: /ch25

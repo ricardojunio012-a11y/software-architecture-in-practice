@@ -1,0 +1,11 @@
+{
+    "name": "morada/en-ch16",
+    "description": "Chapter 16: relational database architecture",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

@@ -1,0 +1,4 @@
+without an idempotency key
+  2 payment(s) for C-301; the two responses carry different payments
+with the same key on both taps
+  1 payment(s) for C-302; the two responses carry the same payment

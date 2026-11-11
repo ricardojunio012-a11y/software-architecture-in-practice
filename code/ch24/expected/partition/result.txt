@@ -1,0 +1,5 @@
+entries in the table: 529,920
+entries for community 12 in October: partitions read: entries_2026_10
+entries for community 12, no date filter: 6 partitions read
+retention: May removed with DROP of the partition (89,280 rows)
+entries in the table: 440,640

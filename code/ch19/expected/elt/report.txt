@@ -1,0 +1,13 @@
+delinquency by region and size (charges from April to September 2026)
+region         size      charges   open  delinquency
+Midwest        small         324     58        17.9%
+Midwest        medium       2862    386        13.0%
+Northeast      small         492     53        10.1%
+Northeast      large        8951   1101        12.1%
+Southeast      medium       1632    156        10.0%
+Southeast      large        4218    571        14.3%
+Southwest      small        1014    105         9.3%
+Southwest      medium       1403    193        13.4%
+Southwest      large        5358    770        14.3%
+West           medium       4104    538        13.8%
+West           large        1919    323        17.4%

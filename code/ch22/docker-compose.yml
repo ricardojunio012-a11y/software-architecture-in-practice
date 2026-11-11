@@ -1,0 +1,51 @@
+# Chapter 22: horizontal scalability and load balancing.
+x-api: &api
+  build: ./node
+  image: morada-en-ch22-node
+  entrypoint: ["node", "--disable-warning=ExperimentalWarning", "src/api.ts"]
+  environment: &env
+    REDIS_URL: redis://redis:6379
+  depends_on:
+    - redis
+
+services:
+  # Three identical API replicas, with no state of their own... almost
+  api1:
+    <<: *api
+    environment: { <<: *env, NAME: api1 }
+  api2:
+    <<: *api
+    environment: { <<: *env, NAME: api2 }
+  api3:
+    <<: *api
+    environment: { <<: *env, NAME: api3 }
+
+  # The load balancer in front of them
+  balancer:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api1
+      - api2
+      - api3
+
+  # Where the sessions go when they leave the replicas' memory
+  redis:
+    image: redis:7.4-alpine
+
+  # Runs the scenarios against the load balancer
+  app:
+    build: ./node
+    image: morada-en-ch22-node
+    volumes:
+      - ./output:/data/output
+    depends_on:
+      - balancer
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch22
+    working_dir: /ch22

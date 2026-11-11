@@ -1,0 +1,19 @@
+{
+  "name": "morada-en-ch26",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "@types/ws": "8.5.12",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  },
+  "dependencies": {
+    "mqtt": "5.14.1",
+    "redis": "4.7.1",
+    "ws": "8.18.2"
+  }
+}

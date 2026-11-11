@@ -1,0 +1,8 @@
+communities: 40 rows extracted
+residents: 5380 rows extracted
+vehicles: 1793 rows extracted
+charges: 32280 rows extracted
+sample of dim_resident:
+  1 | 6c279ae49468d95a
+  2 | 09fe67415f426533
+  3 | 61baf3a55ae00a59

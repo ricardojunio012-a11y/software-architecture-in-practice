@@ -1,0 +1,6 @@
+ok      unique charge in the fact
+ok      every community in the fact exists in the dimension
+ok      every community has a region
+FAILED  positive amount in the source charges: 3 rows
+ok      source = fact + quarantine
+ok      no tax ID or plate in the clear in the analytics database

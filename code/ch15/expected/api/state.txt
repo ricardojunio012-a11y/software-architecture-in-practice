@@ -1,0 +1,7 @@
+payments recorded: 2
+  PAY-0001: charge CH-02, 45000 cents
+  PAY-0002: charge CH-05, 38000 cents
+paid charges: CH-01, CH-02, CH-05
+stored idempotency keys:
+  MC-A: 8d1f-01, 8d1f-02, 8d1f-03
+  MC-B: 5c2e-01, 8d1f-01

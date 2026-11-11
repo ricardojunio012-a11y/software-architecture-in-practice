@@ -1,0 +1,4 @@
+100 payments, gateway down, three layers between the resident and the gateway
+  3 attempts in every layer                2700 calls
+  3 attempts in the billing layer only      300 calls
+  3 in every layer, with a 10% budget       163 calls

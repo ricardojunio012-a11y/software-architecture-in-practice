@@ -1,0 +1,4 @@
+no network: entries 4 to 7 in the local queue (4 pending)
+the network is back: local queue drained (0 pending)
+the server received 10 entries, in order: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+duplicates ignored: 1

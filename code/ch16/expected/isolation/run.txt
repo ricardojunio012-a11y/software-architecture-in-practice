@@ -1,0 +1,31 @@
+== READ COMMITTED
+T1 and T2 begin
+T1 reads the balance: $1,000.00
+T2 reads the balance: $1,000.00
+T1 records a withdrawal of $700.00
+T2 records a withdrawal of $600.00
+T1 commits
+T2 commits
+final balance: -$300.00 (negative: the rule was broken)
+
+== REPEATABLE READ
+T1 and T2 begin
+T1 reads the balance: $1,000.00
+T2 reads the balance: $1,000.00
+T1 records a withdrawal of $700.00
+T2 records a withdrawal of $600.00
+T1 commits
+T2 commits
+final balance: -$300.00 (negative: the rule was broken)
+
+== SERIALIZABLE
+T1 and T2 begin
+T1 reads the balance: $1,000.00
+T2 reads the balance: $1,000.00
+T1 records a withdrawal of $700.00
+T2 records a withdrawal of $600.00
+T1 commits
+T2 cannot commit: serialization failure; it tries again
+T2 reads the balance: $300.00
+T2 refuses the withdrawal of $600.00: insufficient balance
+final balance: $300.00

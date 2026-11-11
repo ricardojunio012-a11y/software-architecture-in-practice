@@ -1,0 +1,6 @@
+before the payment, on the replica: open
+the resident pays (written to the primary)
+right after, reading on the replica: open
+right after, reading on the primary: paid
+right after, reading your own write: paid (replica behind; read on the primary)
+after the replica caught up: paid (read on the replica)

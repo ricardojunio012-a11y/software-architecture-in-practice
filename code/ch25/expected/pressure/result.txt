@@ -1,0 +1,10 @@
+== without backpressure in the workers
+tasks done: 3,050 (3,000 monthly + 50 reissues)
+the reissues finished before the monthly tasks: yes
+payment processor rejections: some
+
+== with backpressure in the workers
+tasks done: 3,050 (3,000 monthly + 50 reissues)
+the reissues finished before the monthly tasks: yes
+payment processor rejections: none
+

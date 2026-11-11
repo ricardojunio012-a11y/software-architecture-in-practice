@@ -1,0 +1,16 @@
+# Chapter 18: integration architecture.
+services:
+  # The payment gateway webhook and the bank's ACH return file
+  app:
+    build: ./node
+    image: morada-en-ch18-node
+    volumes:
+      - ./input:/data/input:ro
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch18
+    working_dir: /ch18
