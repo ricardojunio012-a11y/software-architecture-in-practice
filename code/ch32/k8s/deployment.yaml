@@ -1,0 +1,54 @@
+# The Morada API: the desired state, which Kubernetes maintains
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: morada-api
+  labels:
+    app: morada-api
+spec:
+  replicas: 3 # starting point; after that, the HPA decides
+  selector:
+    matchLabels:
+      app: morada-api
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25% # starts new replicas before removing the old ones
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: morada-api
+    spec:
+      terminationGracePeriodSeconds: 30 # the SIGTERM deadline (chapter 22)
+      containers:
+        - name: api
+          # immutable tag, never "latest"; the signature is checked at admission
+          image: registry.morada.example/morada-api:2026.10.3
+          ports:
+            - name: http
+              containerPort: 3000
+          resources:
+            requests: # what the scheduler reserves on the node, and the HPA's base
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              memory: 512Mi # no CPU limit: uses the node's spare capacity
+          startupProbe: # up to 60 s to start; meanwhile, the other probes wait
+            httpGet:
+              path: /health/live
+              port: http
+            periodSeconds: 2
+            failureThreshold: 30
+          livenessProbe: # stuck? restart. Looks only at its own process
+            httpGet:
+              path: /health/live
+              port: http
+            periodSeconds: 10
+            failureThreshold: 3
+          readinessProbe: # can it take requests? If not, it leaves the Service
+            httpGet:
+              path: /health/ready
+              port: http
+            periodSeconds: 5
+            failureThreshold: 2

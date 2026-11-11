@@ -1,0 +1,47 @@
+{
+  "consumer": 3,
+  "unit": "302",
+  "directory": {
+    "name": "Charles Mitchell",
+    "ssn": "916-18-0339",
+    "email": "charles.mitchell@example.com"
+  },
+  "charges": [
+    {
+      "unit": "302",
+      "period": "2026-10",
+      "amount_cents": 89000,
+      "paid": true
+    }
+  ],
+  "events": [
+    {
+      "type": "ResidentRegistered",
+      "time": "2026-09-01T09:03",
+      "data": {
+        "ssn": "916-18-0339",
+        "name": "Charles Mitchell",
+        "unit": "302",
+        "email": "charles.mitchell@example.com"
+      }
+    },
+    {
+      "type": "ChargePaid",
+      "time": "2026-10-05T10:03",
+      "data": {
+        "unit": "302",
+        "payer": "Charles Mitchell",
+        "amount": "890.00",
+        "period": "2026-10"
+      }
+    },
+    {
+      "type": "PackageReceived",
+      "time": "2026-10-12T15:30",
+      "data": {
+        "unit": "302",
+        "recipient": "Charles Mitchell"
+      }
+    }
+  ]
+}

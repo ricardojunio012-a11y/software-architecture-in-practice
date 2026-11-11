@@ -1,0 +1,6 @@
+function morada-financial-report deployed (nodejs22.x, 1024 MB)
+
+cold     200 financial-reports/community-0001/2026-10.pdf 1004 bytes matches
+warm     200 financial-reports/community-0002/2026-10.pdf 1004 bytes matches
+warm     200 financial-reports/community-0003/2026-10.pdf 1004 bytes matches
+cold     200 financial-reports/community-0004/2026-10.pdf 1004 bytes matches

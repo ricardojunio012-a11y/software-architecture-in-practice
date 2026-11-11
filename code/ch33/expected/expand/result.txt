@@ -1,0 +1,20 @@
+deployment 1, expand: v2 writes to both columns, reads from the old one
+  migration: ALTER TABLE residents ADD COLUMN phone text
+  v1 and v2 together                    200 operations: 0 errors, 0 wrong reads
+  only v2                               200 operations: 0 errors, 0 wrong reads
+
+migrate the old data, with v1 already gone
+  copy in batches of 250: 925 rows in 4 batches
+
+deployment 2: v3 starts reading from the new column
+  v2 and v3 together                    200 operations: 0 errors, 0 wrong reads
+  only v3                               200 operations: 0 errors, 0 wrong reads
+
+deployment 3, contract: v4 knows only the new column
+  v3 and v4 together                    200 operations: 0 errors, 0 wrong reads
+  only v4                               200 operations: 0 errors, 0 wrong reads
+  migration: ALTER TABLE residents DROP COLUMN mobile
+  only v4, without the old column       200 operations: 0 errors, 0 wrong reads
+
+total: 0 errors and 0 wrong reads
+check: 1132 residents, 0 without a phone

@@ -1,0 +1,23 @@
+# Automatic scaling of the API: between 3 and 30 replicas, aiming at 60% of the
+# requested CPU. The lab reads this file and simulates the controller with these values
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: morada-api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: morada-api
+  minReplicas: 3
+  maxReplicas: 30
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60 # % of the CPU request, not of the node
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300 # the default: scales down only after 5 minutes

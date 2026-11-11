@@ -1,0 +1,22 @@
+log: valid
+function own-data (ADR-010): no module reads or writes another module's table
+function dashboard-latency (ADR-038): dashboard p95 under 300 ms at 40 requests/s
+
+commit c1: delinquency dashboard with one aggregate query
+  own-data          ok
+  dashboard-latency ok
+      p50 2 ms, p95 3 ms; 2.0 queries per request (up to 2)
+  => approved
+
+commit c2: bookings checks the balance directly in the charges table
+  own-data          FAILED
+      bookings/rules.ts:6 reads billing.charges, owned by billing
+  dashboard-latency ok
+      p50 2 ms, p95 3 ms; 2.0 queries per request (up to 2)
+  => blocked; nothing was deployed
+
+commit c3: dashboard sums the balance unit by unit
+  own-data          ok
+  dashboard-latency FAILED
+      p50 981 ms, p95 2,049 ms; 124.6 queries per request (up to 200)
+  => blocked; nothing was deployed

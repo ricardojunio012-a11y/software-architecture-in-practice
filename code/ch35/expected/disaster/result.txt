@@ -1,0 +1,13 @@
+Morada: the database server is lost
+
+1. Base backup: 3000 charges, 0 paid, hash db12280b3f12
+2. 300 payments; the WAL segment closes and goes to the archive
+3. 40 more payments, in the segment still open on the server
+   paid charges on the primary: 340
+4. The server is lost; restore from the base backup with all the
+   archived WAL, no target: recovery runs to the last segment
+   paid charges on the restored database: 300
+   payments lost (RPO): 40, the ones in the segment that never reached the archive
+
+With archive_timeout = 60, the segment would close every minute: the RPO
+would be limited to about a minute of transactions, not "until 16 MB fill up".

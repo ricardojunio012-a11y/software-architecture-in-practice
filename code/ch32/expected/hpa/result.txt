@@ -1,0 +1,8 @@
+day 5: 16,128,585 requests; peak of 767 requests/s at 08:01
+replica: 500m of CPU requested; node: 2 vCPU, 3 replicas per node
+
+scenario                          slow   no response  replicas  node-hours replica-hours
+3 fixed replicas                76.16%        14.52%   up to 3        24.0          72.0
+24 fixed replicas                0.00%         0.00%  up to 24       192.0         576.0
+HPA (3 to 30, target 60%)        0.78%         0.02%  up to 24        65.8         173.7
+HPA with pre-scaling at 07:30    0.00%         0.00%  up to 25        82.1         190.6

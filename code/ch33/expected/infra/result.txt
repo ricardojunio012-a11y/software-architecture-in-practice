@@ -1,0 +1,15 @@
+Morada staging infrastructure (OpenTofu, LocalStack, and PostgreSQL)
+1. initial plan: 6 to add, 0 to change, 0 to destroy
+2. applied; what exists, according to the SDKs:
+   queue morada-staging-charges: visibility timeout 30 s
+     dead-lettered after 5 receives, to morada-staging-charges-dlq
+     tags: environment=staging, managed_by=opentofu, project=morada
+   bucket morada-staging-financial-reports: versioning Enabled
+   database morada_reporting: owner reporting
+3. plan again, with nothing changed (exit code 0): 0 to add, 0 to change, 0 to destroy
+4. someone sets the queue visibility timeout to 300 s in the console
+5. plan (exit code 2): 0 to add, 1 to change, 0 to destroy
+     aws_sqs_queue.charges.visibility_timeout_seconds: 300 -> 30
+6. applied: visibility timeout back to 30 s
+7. destroy plan: 0 to add, 0 to change, 6 to destroy
+8. destroyed

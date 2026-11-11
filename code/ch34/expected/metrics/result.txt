@@ -1,0 +1,17 @@
+Ten minutes of the Billing API: 4,200 requests
+
+1. RED per route (rate, errors, duration)
+route                  rate errors     p50     p95     p99  p95 from buckets
+POST /v1/payments     2.0/s   1.9%  177 ms  325 ms  439 ms            441 ms
+GET  /v1/charges      5.0/s   0.1%   39 ms   75 ms  101 ms             75 ms
+
+2. Cardinality of the duration histogram
+attributes                               series   series in Prometheus
+method, route, and status                     4                     68
+method, route, status, and community      2,000                 34,000
+
+3. Trace sampling (slow: over 400 ms)
+strategy                            traces with error     slow
+keep everything                      4,200         27       21
+at the head, 10% by trace_id           411          2        2
+at the tail, errors, slow, and 10%     448         27       21

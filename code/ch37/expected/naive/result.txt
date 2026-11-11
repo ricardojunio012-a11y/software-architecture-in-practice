@@ -1,0 +1,19 @@
+Chapter 37, version naive: the former resident deleted only from the directory
+
+1. Directory with 4 residents and 9 published events
+2. Nightly backup with pg_dump
+3. Charles Mitchell (consumer 3, unit 302) moves out
+   asks for a copy of the data (right to know): 1 directory record, 1 charge, 3 events
+   and the deletion: DELETE
+4. Where his name, SSN, or email still appears in plain text
+   directory.residents   0
+   directory.charges     0
+   events.published      3
+   audit.trail           0
+   nightly backup        4 lines
+5. Trying to read what is left
+   his events: 3 published, 3 readable
+   other residents' events: 6 published, 6 readable
+   restored backup: Anna Roberts, Brian Taylor, Charles Mitchell, Danielle Smith
+6. His charges kept (legal obligation): 1
+7. Audit trail: 2 entries, intact

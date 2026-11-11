@@ -1,0 +1,16 @@
+region: us-east-1
+first run
+  created         bucket  morada-reports
+  created         queue   morada-notices-dead
+  created         queue   morada-notices
+  created         table   morada-documents
+second run
+  already existed bucket  morada-reports
+  already existed queue   morada-notices-dead
+  already existed queue   morada-notices
+  already existed table   morada-documents
+check, read back from the cloud
+  bucket morada-reports: us-east-1, AES256, public access blocked
+  queue morada-notices: visibility 30 s, 3 deliveries, then morada-notices-dead
+  table morada-documents: PAY_PER_REQUEST, key community + month, ACTIVE
+  bucket tags: module=communications, project=morada

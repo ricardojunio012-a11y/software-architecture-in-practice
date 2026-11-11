@@ -1,0 +1,5 @@
+a worker receives the task and crashes before the ack; 3 s later, another tries
+                                in memory   on AWS (LocalStack)
+tasks on the first delivery     1           1
+tasks after the timeout         0           1
+the task was lost               yes         no

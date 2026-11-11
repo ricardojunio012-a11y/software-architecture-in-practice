@@ -1,0 +1,22 @@
+Morada: point-in-time recovery (PITR)
+
+1. Before the backup
+   charges: 3000 charges, 0 paid, hash db12280b3f12
+2. Base backup with pg_basebackup; from here on, only the WAL is copied
+3. The day goes on: 400 payments and 20 notices after the backup
+   charges: 3000 charges, 400 paid, hash 37b51c6b3687
+4. By mistake, DROP TABLE billing.charges in production
+   the rest of Morada stays up: 15 notices published afterward
+   the charges screen fails: error 42P01 (the table does not exist)
+5. Restore on a separate instance, up to the moment before the DROP
+   the open WAL segment is closed and archived
+   restored charges: 3000 charges, 400 paid, hash 37b51c6b3687
+   same as before the accident: yes
+   notices on the restored instance: 120; in production: 135
+   rolling the whole database back would lose 15 notices
+6. Only the table goes back to production, with pg_dump and psql
+   charges in production: 3000 charges, 400 paid, hash 37b51c6b3687
+   notices in production: 135
+   payments lost (RPO): 0
+
+The time of each stage (the measured RTO) is in output/timings/pitr.txt.

@@ -1,0 +1,53 @@
+# Chapter 32: containers, Kubernetes, and serverless.
+services:
+  # Morada on Kubernetes, simulated: reads the manifests in k8s/ and runs the
+  # scheduler, the HPA, and the financial report function on a simulated clock,
+  # with fixed seeds
+  app:
+    build: ./node
+    image: morada-en-ch32-node
+    volumes:
+      - ./k8s:/data/k8s:ro
+      - ./output:/data/output
+
+  # The emulated AWS, only for the "cloud" step: Lambda and S3. The functions run in
+  # containers that LocalStack creates, so it gets the Docker socket (which amounts
+  # to giving it control of the machine's Docker: only in a lab).
+  # 4.14.0 is the last LocalStack version that runs without an account or a token.
+  # No port is published on the host
+  localstack:
+    image: localstack/localstack:4.14.0
+    profiles: ["cloud"]
+    environment:
+      SERVICES: lambda,s3,iam,sts,logs
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:4566/_localstack/health"]
+      interval: 3s
+      retries: 40
+
+  # The same lab, pointed at LocalStack
+  cloud:
+    build: ./node
+    image: morada-en-ch32-node
+    profiles: ["cloud"]
+    command: ["cloud"]
+    environment:
+      AWS_ENDPOINT_URL: http://localstack:4566
+      AWS_REGION: us-east-1
+      # Test credentials: LocalStack accepts any value
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+    volumes:
+      - ./output:/data/output
+    depends_on:
+      localstack:
+        condition: service_healthy
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch32
+    working_dir: /ch32

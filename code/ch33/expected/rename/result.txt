@@ -1,0 +1,12 @@
+rename at once: the migration and the new code in the same deployment
+  only v1 (mobile column)               200 operations: 0 errors, 0 wrong reads
+  migration: ALTER TABLE residents RENAME COLUMN mobile TO phone
+  v1 and v4 together, during the switch 200 operations: 100 errors, 0 wrong reads
+    error: column "mobile" of relation "residents" does not exist
+  only v4 (phone column)                200 operations: 0 errors, 0 wrong reads
+
+in the other order: the new code goes out before the migration
+  v1 and v4 together, before migrating  200 operations: 100 errors, 0 wrong reads
+    error: column "phone" does not exist
+
+total: 200 errors and 0 wrong reads

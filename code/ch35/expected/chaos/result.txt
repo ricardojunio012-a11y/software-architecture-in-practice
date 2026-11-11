@@ -1,0 +1,16 @@
+Morada: chaos experiment on the notices API (1000 requests each)
+Steady-state hypothesis: at least 99.9% of requests answered
+The failure is injected after request 500.
+
+experiment                                        answered  avail.  hypothesis
+baseline: api-1 (a) and api-3 (b)             1000 of 1000  100.0%  holds
+api-1 dies; balancer does not try another      750 of 1000   75.0%  refuted
+api-1 dies; balancer tries the other          1000 of 1000  100.0%  holds
+zone a dies: api-1 (a) and api-2 (a)           500 of 1000   50.0%  refuted
+zone a dies: api-1 (a) and api-3 (b)          1000 of 1000  100.0%  holds
+
+The math of section 35.1, with 99.5% replicas and 99.9% zones (premises):
+  one replica                                   99.5000%    43.8 h/year
+  two independent replicas                      99.9975%     0.2 h/year
+  two replicas in the same zone                 99.8975%     9.0 h/year
+  two replicas, each in its own zone            99.9964%     0.3 h/year

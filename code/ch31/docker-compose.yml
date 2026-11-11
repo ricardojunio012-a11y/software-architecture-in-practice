@@ -1,0 +1,38 @@
+# Chapter 31: cloud, managed services, and vendor lock-in.
+services:
+  # The emulated AWS: S3, SQS, and DynamoDB in the N. Virginia region (us-east-1).
+  # 4.14.0 is the last LocalStack version that runs without an account or a token.
+  # No port is published on the host: only the application, on the Compose network,
+  # reaches it
+  localstack:
+    image: localstack/localstack:4.14.0
+    environment:
+      SERVICES: s3,sqs,dynamodb
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:4566/_localstack/health"]
+      interval: 3s
+      retries: 40
+
+  # Morada: provisions the infrastructure through the SDK and runs the use case
+  # through the ports, with the AWS adapters and with the in-memory ones
+  app:
+    build: ./node
+    image: morada-en-ch31-node
+    environment:
+      AWS_ENDPOINT_URL: http://localstack:4566
+      AWS_REGION: us-east-1
+      # Test credentials: LocalStack accepts any value
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+    volumes:
+      - ./output:/data/output
+    depends_on:
+      localstack:
+        condition: service_healthy
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch31
+    working_dir: /ch31

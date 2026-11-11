@@ -1,0 +1,17 @@
+# Chapter 34: observability and site reliability engineering (SRE).
+services:
+  # The trace of a payment with the OpenTelemetry SDK, the RED metrics, sampling, and
+  # the SLO of the payments API over a simulated month. Everything runs in a single
+  # process, with a simulated clock and fixed seeds, without publishing ports on the host
+  app:
+    build: ./node
+    image: morada-en-ch34-node
+    volumes:
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch34
+    working_dir: /ch34

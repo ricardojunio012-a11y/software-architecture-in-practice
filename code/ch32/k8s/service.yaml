@@ -1,0 +1,43 @@
+# A stable name and address in front of replicas that come and go
+apiVersion: v1
+kind: Service
+metadata:
+  name: morada-api
+spec:
+  selector:
+    app: morada-api # every ready replica with this label
+  ports:
+    - name: http
+      port: 80
+      targetPort: http # the port with this name in the container
+---
+# The public entry point (Gateway API): the /v1 path of api.morada.example goes to the
+# Service. The "public-gateway" Gateway belongs to the platform team
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: morada-api
+spec:
+  parentRefs:
+    - name: public-gateway
+  hostnames:
+    - api.morada.example
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /v1
+      backendRefs:
+        - name: morada-api
+          port: 80
+---
+# During node maintenance, never fewer than 2 replicas up
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: morada-api
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: morada-api

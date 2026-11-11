@@ -1,0 +1,18 @@
+5 objects read from k8s/:
+  Deployment, HorizontalPodAutoscaler, Service, HTTPRoute, PodDisruptionBudget
+
+ok     the Deployment selects its own pods ({"app":"morada-api"})
+ok     image of api has a fixed tag (registry.morada.example/morada-api:2026.10.3)
+ok     api requests CPU and memory ({"cpu":"500m","memory":"512Mi"})
+ok     api has a memory limit (512Mi)
+ok     api: liveness and readiness are different checks (/health/live and /health/ready)
+ok     api: startup has its own deadline (60 s)
+ok     Service morada-api finds the pods ({"app":"morada-api"})
+ok     Service morada-api: port http exists in the container (http)
+ok     HTTPRoute morada-api points to a Service that exists (morada-api:80)
+ok     the HPA points to the Deployment (morada-api)
+ok     the CPU-based HPA has a CPU request in every container (cpu metric)
+ok     the PodDisruptionBudget lets a node be drained (minAvailable 2, minReplicas 3)
+
+for the simulation: 500m per replica, 3 to 30 replicas, target 60%,
+scale-down window 300 s

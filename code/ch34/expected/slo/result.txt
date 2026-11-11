@@ -1,0 +1,27 @@
+Payments API, November 2026: 30 simulated days, seed 34
+
+requests: 14,896,713   failed: 7,681
+availability SLI: 99.948%
+internal SLO of 99.95%: budget of 7,448 failed requests, 103% consumed
+   budget exhausted at 11/30 11:13
+contract SLA, 99.9%: limit of 14,896 failed requests, met
+
+where the budget went                                      errors     of budget
+A  11/05 10:12 to 11/05 10:34  gateway degraded (8.00%)     3,568           48%
+B  11/18 03:07 to 11/18 03:08  replica restarts (20.00%)        9            0%
+C  11/22 14:00 to 11/22 22:00  cards declined (0.60%)       1,041           14%
+D  11/26 00:00 to 11/30 24:00  short timeout (0.08%)        1,520           20%
+   the whole month, background noise (0.01%)                1,543           21%
+
+error budget burn rate alerts (multiwindow)
+rule                            fires         stops firing
+page, 1 h and 5 min, 14.4x      11/05 10:17   11/05 10:39
+page, 6 h and 30 min, 6x        11/05 10:18   11/05 11:03
+page, 6 h and 30 min, 6x        11/22 17:11   11/22 22:15
+ticket, 3 d and 6 h, 1x         11/05 10:17   11/05 16:32
+ticket, 3 d and 6 h, 1x         11/22 17:30   11/23 03:45
+ticket, 3 d and 6 h, 1x         11/27 14:34   11/30 24:00
+
+naive alert: more than 1% errors in the last 5 minutes
+notifications: 9   overnight (midnight to 6 a.m.): 3   lasting up to 5 minutes: 5
+by incident: A 1, B 1, C 5, D 2; outside them: 0

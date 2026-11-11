@@ -1,0 +1,59 @@
+# Chapter 36: security architecture.
+services:
+  # The lab's vault: generates the secrets in a volume, outside the code and Git
+  vault:
+    image: alpine:3.22
+    entrypoint: ["sh", "/generate-secrets.sh"]
+    volumes:
+      - ./keycloak/generate-secrets.sh:/generate-secrets.sh:ro
+      - secrets:/secrets
+
+  # The identity provider: OpenID Connect, with Morada's roles
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.4
+    entrypoint: ["bash", "/start.sh"]
+    environment:
+      KC_HEALTH_ENABLED: "true"
+      KC_LOG_LEVEL: info
+    volumes:
+      - ./keycloak/start.sh:/start.sh:ro
+      - ./keycloak/morada-realm.json:/opt/keycloak/data/import/morada-realm.json:ro
+      - secrets:/run/secrets:ro
+    depends_on:
+      vault:
+        condition: service_completed_successfully
+    healthcheck:
+      # The image has no curl: the check opens the management port (9000) from bash
+      test:
+        - CMD-SHELL
+        - >-
+          exec 3<>/dev/tcp/127.0.0.1/9000 &&
+          printf 'GET /health/ready HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n' >&3 &&
+          grep -q '"UP"' <&3
+      interval: 3s
+      retries: 20
+      # On a busy machine, the first start takes a few minutes
+      start_period: 600s
+
+  # Morada's API and the lab scripts (no published ports)
+  app:
+    build: ./node
+    image: morada-en-ch36-node
+    environment:
+      ISSUER: http://keycloak:8080/realms/morada
+    volumes:
+      - ./output:/data/output
+      - secrets:/run/secrets
+    depends_on:
+      keycloak:
+        condition: service_healthy
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch36
+    working_dir: /ch36
+
+volumes:
+  secrets:

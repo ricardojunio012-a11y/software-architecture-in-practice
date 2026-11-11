@@ -1,0 +1,11 @@
+the shortcut: copy the data right after adding the column, with v1 live
+  migration: ALTER TABLE residents ADD COLUMN phone text
+  copy in batches of 250: 1000 rows in 4 batches
+  v1 and v2 together                    200 operations: 0 errors, 0 wrong reads
+  only v2                               200 operations: 0 errors, 0 wrong reads
+  v2 and v3 together                    200 operations: 0 errors, 2 wrong reads
+  only v3                               200 operations: 0 errors, 4 wrong reads
+
+total: 0 errors and 6 wrong reads
+check: 1074 residents, 7 without a phone
+residents whose phone differs from their mobile: 34

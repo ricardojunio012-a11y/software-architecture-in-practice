@@ -1,0 +1,20 @@
+                            in memory   on AWS (LocalStack)
+community 101               published   published
+community 102               published   published
+community 102 again         duplicate   duplicate
+community 103               published   published
+notices sent                3           3
+documents of 102            1           1
+  101 2026-10: notice sent, PDF with 243 bytes
+  102 2026-10: notice sent, PDF with 263 bytes
+  103 2026-10: notice sent, PDF with 283 bytes
+same result in both adapters: yes
+AWS calls in the flow: 21
+  DynamoDB PutItem          4
+  DynamoDB Query            1
+  S3 GetObject              3
+  S3 PutObject              4
+  SQS DeleteMessage         3
+  SQS GetQueueUrl           1
+  SQS ReceiveMessage        2
+  SQS SendMessage           3

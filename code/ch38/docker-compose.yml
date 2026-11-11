@@ -1,0 +1,17 @@
+# Chapter 38: architecture governance.
+services:
+  # Morada's decision log is validated, and two decisions become fitness functions that
+  # block commits. The database is an embedded PostgreSQL (PGlite), in memory, and the
+  # load runs on a simulated clock: no ports are published
+  app:
+    build: ./node
+    image: morada-en-ch38-node
+    volumes:
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch38
+    working_dir: /ch38

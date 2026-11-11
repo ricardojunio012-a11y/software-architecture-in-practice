@@ -1,0 +1,19 @@
+Chapter 37, version erasure: crypto-shredding, one key per consumer
+
+1. Directory with 4 residents and 9 published events
+2. Nightly backup with pg_dump, without the vault schema
+3. Charles Mitchell (consumer 3, unit 302) moves out
+   asks for a copy of the data (right to know): 1 directory record, 1 charge, 3 events
+   and the deletion: directory row deleted, key destroyed
+4. Where his name, SSN, or email still appears in plain text
+   directory.residents   0
+   directory.charges     0
+   events.published      0
+   audit.trail           0
+   nightly backup        0 lines
+5. Trying to read what is left
+   his events: 3 published, 0 readable
+   other residents' events: 6 published, 6 readable
+   restored backup: Anna Roberts, Brian Taylor, consumer 3 unreadable, Danielle Smith
+6. His charges kept (legal obligation): 1
+7. Audit trail: 2 entries, intact

@@ -1,0 +1,10 @@
+one month (30 days), infrastructure only, AWS prices in N. Virginia (us-east-1)
+API: 301.3 million requests; not answered in time: HPA 0, planned 0
+
+approach                           $/month   basis
+API on EKS, HPA and pre-scaling     179.91   1,322 node-hours + control plane
+API on EKS, 24 fixed replicas       542.02   5,760 node-hours + control plane
+API on 8 Kamal VMs                  470.02   8 fixed machines
+API on Kamal VMs, planned           186.12   2,281 node-hours, 3 to 8 VMs
+PDF as a function                     0.05   4,500 calls
+PDF in the cluster                   29.41   Job + 1 fixed replica

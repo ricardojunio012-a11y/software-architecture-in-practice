@@ -1,0 +1,35 @@
+in production: c0
+
+commit c1: 3% discount for paying 5 days early
+  compile      ok
+  tests        ok      5 of 5
+  architecture ok      0 violations
+  package      ok      morada-ec4dcdea5bca
+  canary       ok      5%: 0 errors in 1017; production: 0 in 18983
+  => deployed: c1 serves 100% of the traffic
+
+commit c2: discount truncated instead of rounded
+  compile      ok
+  tests        FAILED  4 of 5; failed: "the discount is rounded to the nearest cent"
+  => blocked at the tests stage; nothing was deployed
+
+commit c3: due date on a holiday moves to the business day (shortcut)
+  compile      ok
+  tests        ok      6 of 6
+  architecture FAILED
+      domain-without-infrastructure: domain/fees.ts -> adapters/holidays-pg.ts
+  => blocked at the architecture stage; nothing was deployed
+
+commit c4: due date on a holiday moves to the business day (port)
+  compile      ok
+  tests        ok      6 of 6
+  architecture ok      0 violations
+  package      ok      morada-0a0ca6c54514
+  canary       FAILED
+      5%: 29 errors in 1017 (holidays for 2027 not registered); production: 0 in 18983
+  => rolled back: the canary was turned off; production stays on c1
+
+summary: 4 commits, 2 deployments (c1 and c4), 2 blocked
+change failure rate: 1 of 2 (50%)
+requests affected by the failure: 29 of 20000
+in production: c1

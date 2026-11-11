@@ -1,0 +1,46 @@
+# Chapter 33: continuous delivery, infrastructure as code, and the platform.
+services:
+  # The Morada database: for the expand/contract migrations and the OpenTofu database
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada", "-h", "127.0.0.1"]
+      interval: 2s
+      retries: 30
+
+  # The "cloud": LocalStack emulates the AWS queue (SQS) and bucket (S3). The version
+  # is pinned at 4.14.0, the last one that runs without an account or a token (see the
+  # README)
+  cloud:
+    image: localstack/localstack:4.14.0
+    environment:
+      SERVICES: s3,sqs
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:4566/_localstack/health"]
+      interval: 3s
+      retries: 40
+
+  app:
+    build: ./node
+    image: morada-en-ch33-node
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+      CLOUD_URL: http://cloud:4566
+    volumes:
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+      cloud:
+        condition: service_healthy
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch33
+    working_dir: /ch33

@@ -1,0 +1,3 @@
+{"ts":"2026-11-05T12:00:00.330Z","level":"warn","service":"billing","msg":"no response from gateway; retrying","charge":"C-2026-11-0412","attempt":1,"trace_id":"344ffb4b04230482ee6d3c313b1eee03","span_id":"f767dc42b146caed"}
+{"ts":"2026-11-05T12:00:00.432Z","level":"info","service":"billing","msg":"payment confirmed","charge":"C-2026-11-0412","resident":"R-8812","trace_id":"344ffb4b04230482ee6d3c313b1eee03","span_id":"7f9440755db0f9ef"}
+{"ts":"2026-11-05T12:00:02.845Z","level":"info","service":"communications","msg":"confirmation email sent","charge":"C-2026-11-0412","resident":"R-8812","trace_id":"344ffb4b04230482ee6d3c313b1eee03","span_id":"ea39c976cd8dc880"}

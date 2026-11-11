@@ -1,0 +1,27 @@
+Chapter 37, version audit-trail: the hash-chained audit trail
+
+1. Eight entries written by the application
+   1 2026-10-20T09:00 president.anna viewed consumer:3 5675162b403e
+   2 2026-10-20T09:05 frontdesk.john logged unit:302 df9efdeef151
+   3 2026-10-20T10:12 support.brian exported community:12 2bdc7d320a0d
+   4 2026-10-20T11:00 privacy.desk received request:88 f70c0e69f65f
+   5 2026-10-20T11:30 privacy.desk exported consumer:3 18f694a54438
+   6 2026-10-20T11:31 privacy.desk deleted consumer:3 03d24ec400fd
+   7 2026-10-20T14:00 president.anna viewed consumer:1 f0250aad1544
+   8 2026-10-20T23:00 system copied backup:nightly b2bd1f4060ea
+   anchor published outside the database: entry 8, b2bd1f4060ea
+   verification: intact
+2. The application tries to change the author of entry 3
+   refused (42501, permission denied for table trail)
+3. The database owner tries the same
+   refused (P0001, the audit trail accepts only inserts)
+4. The owner turns off the triggers and changes the author of entry 3
+   verification: entry 3: content changed after it was written
+5. He changes entry 3 and recomputes the hashes from 3 to 8
+   verification without the anchor: intact
+   verification with the anchor: anchor at entry 8: hash differs from the published one
+6. He deletes entry 5
+   verification: entry 6: broken link, the previous hash does not match
+7. He deletes entries 7 and 8, the end of the trail
+   verification without the anchor: intact
+   verification with the anchor: anchor at entry 8: missing (the trail ends at 6)

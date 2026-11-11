@@ -1,0 +1,43 @@
+Payment of charge C-2026-11-0412, from the app to the email
+
+1. With the traceparent in the HTTP header, in the outbox, and in the queue message
+
+trace 344ffb4b04230482ee6d3c313b1eee03: 11 spans, 4 services, 2850 ms
+ start duration  service          span
+     0   452 ms  app              POST /v1/payments (client)
+    12   428 ms  billing            POST /v1/payments (server) 201
+    20     8 ms  billing              SELECT morada.charges (client)
+    30   300 ms  billing              POST /authorizations (client) ERROR: timeout
+   370    48 ms  billing              POST /authorizations (client) 200
+   420     6 ms  billing              UPDATE morada.charges (client)
+   426     5 ms  billing              INSERT morada.outbox (client)
+  1640     6 ms  billing-relay        publish payments.confirmed (producer)
+  2110   740 ms  communications         process payments.confirmed (consumer)
+  2115    15 ms  communications           build notice (internal)
+  2135   705 ms  communications           smtp send (client)
+
+   the email log has trace_id 344ffb4b04230482ee6d3c313b1eee03
+   the same as the payment: yes
+
+2. Without the traceparent column in the outbox
+   traces: 2
+
+trace 344ffb4b04230482ee6d3c313b1eee03: 7 spans, 2 services, 452 ms
+ start duration  service          span
+     0   452 ms  app              POST /v1/payments (client)
+    12   428 ms  billing            POST /v1/payments (server) 201
+    20     8 ms  billing              SELECT morada.charges (client)
+    30   300 ms  billing              POST /authorizations (client) ERROR: timeout
+   370    48 ms  billing              POST /authorizations (client) 200
+   420     6 ms  billing              UPDATE morada.charges (client)
+   426     5 ms  billing              INSERT morada.outbox (client)
+
+trace ea39c976cd8dc8805beae1a04ebf89c0: 4 spans, 2 services, 1210 ms
+ start duration  service          span
+  1640     6 ms  billing-relay    publish payments.confirmed (producer)
+  2110   740 ms  communications     process payments.confirmed (consumer)
+  2115    15 ms  communications       build notice (internal)
+  2135   705 ms  communications       smtp send (client)
+
+   the email log has trace_id ea39c976cd8dc8805beae1a04ebf89c0
+   whoever searches the payment trace does not find the email

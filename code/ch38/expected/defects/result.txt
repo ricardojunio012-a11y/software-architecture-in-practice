@@ -1,0 +1,19 @@
+log decisions-with-defects/: 7 files
+  ADR-010  accepted               Morada as a modular monolith, with verified boundar…
+  ADR-012  accepted               Extract only Communications as a service
+  ADR-021  accepted               Percentile latency targets and a load test of the 5…
+  ADR-028  accepted               Timeout, bulkhead and circuit breaker on every exte…
+  ADR-033  accepted               Single pipeline with architecture tests and canary
+  ADR-033  proposed               Morada's tech radar, reviewed every quarter
+  ADR-038  approved               Verifiable decisions become deterministic fitness f…
+fitness functions:
+  own-data          protects ADR-010
+  dashboard-latency protects ADR-038
+result: 7 problems
+  adr-012-communications-as-a-service.md: missing section "When to revisit"
+  adr-029-dependency-protections.md: the title says ADR-028
+  adr-038-fitness-functions.md: invalid status "approved"
+  ADR-033: number repeated in adr-033-single-pipeline.md and adr-033-tech-radar.md
+  ADR-033: supersedes ADR-030, which does not exist
+  ADR-038: supersedes ADR-021, which is still "accepted"
+  function dashboard-latency: ADR-038 is "approved"

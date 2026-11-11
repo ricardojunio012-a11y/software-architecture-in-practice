@@ -1,0 +1,37 @@
+# Chapter 37: privacy and compliance.
+services:
+  # Deleting a former resident (database, events, and backup) and the audit trail
+  app:
+    build: ./node
+    image: morada-en-ch37-node
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+      APP_URL: postgresql://morada_app:app@db:5432/morada
+      RESTORE_URL: postgresql://morada:morada@db:5432/restore
+      # The lab's master key. In production, it lives in a key service (KMS or HSM)
+      # and never leaves it.
+      MASTER_KEY: ${MASTER_KEY}
+    volumes:
+      - ./sql:/data/sql:ro
+      - ./output:/data/output
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "morada"]
+      interval: 2s
+      retries: 30
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch37
+    working_dir: /ch37

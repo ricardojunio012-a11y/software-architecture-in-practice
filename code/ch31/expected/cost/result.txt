@@ -1,0 +1,9 @@
+                                           lines  uses the SDK
+core (report.ts)                              30  no
+ports (ports.ts)                              33  no
+AWS adapters (aws.ts)                        126  yes
+in-memory adapters (memory.ts)                53  no
+direct version, no ports (direct.ts)          90  yes
+with ports (core + ports + AWS): 189 lines; direct: 90 (2.1 times)
+Morada files that import the SDK: aws.ts, clients.ts, infra.ts
+AWS calls in the same flow: direct 20, with ports 20

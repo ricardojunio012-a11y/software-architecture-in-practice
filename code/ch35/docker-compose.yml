@@ -1,0 +1,74 @@
+# Chapter 35: high availability and disaster recovery.
+services:
+  # The production database. Each complete WAL segment is copied to the "archive"
+  # volume, which plays the role of the backup bucket somewhere else
+  db:
+    image: postgres:17-alpine
+    entrypoint: ["sh", "/entrypoint.sh"]
+    environment:
+      POSTGRES_USER: morada
+      POSTGRES_PASSWORD: morada
+      POSTGRES_DB: morada
+    volumes:
+      - ./db/entrypoint.sh:/entrypoint.sh:ro
+      - ./db/replication.sh:/docker-entrypoint-initdb.d/replication.sh:ro
+      - archive:/archive
+    healthcheck:
+      # Over the network: during initialization, the temporary server listens only on
+      # the local socket
+      test: ["CMD", "pg_isready", "-U", "morada", "-h", "127.0.0.1"]
+      interval: 2s
+      retries: 30
+
+  # Three replicas of the notices API, in two zones. Each one has an admin port
+  # (9090) that the chaos experiment uses to take it down and bring it back
+  api-1:
+    build: ./node
+    image: morada-en-ch35-node
+    command: ["api"]
+    environment: { REPLICA: api-1, ZONE: a }
+    healthcheck: &health
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:9090/health"]
+      interval: 2s
+      retries: 30
+  api-2:
+    build: ./node
+    image: morada-en-ch35-node
+    command: ["api"]
+    environment: { REPLICA: api-2, ZONE: a }
+    healthcheck: *health
+    depends_on: [api-1]
+  api-3:
+    build: ./node
+    image: morada-en-ch35-node
+    command: ["api"]
+    environment: { REPLICA: api-3, ZONE: b }
+    healthcheck: *health
+    depends_on: [api-1]
+
+  # Runs the scenarios: the backup, the accident, the restore, and the chaos
+  app:
+    build: ./node
+    image: morada-en-ch35-node
+    environment:
+      DATABASE_URL: postgresql://morada:morada@db:5432/morada
+    volumes:
+      - ./output:/data/output
+      - archive:/archive:ro
+      - copies:/copies
+    depends_on:
+      db: { condition: service_healthy }
+      api-1: { condition: service_healthy }
+      api-2: { condition: service_healthy }
+      api-3: { condition: service_healthy }
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch35
+    working_dir: /ch35
+
+volumes:
+  archive:
+  copies:

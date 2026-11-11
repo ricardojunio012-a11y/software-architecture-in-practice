@@ -1,0 +1,25 @@
+== mode: idor
+1. login at Keycloak (OIDC) and roles in the token
+   anna   roles: resident
+   brian  roles: board_president, resident
+   carol  roles: front_desk
+   dora   roles: management_company
+   ed     roles: resident
+   anna's token: aud includes morada-api: true
+   lifetime: 300 s
+2. authentication
+   no token, INV-1001: 401 unauthenticated
+   anna with a forged board_president role in the token: 401 invalid-token
+   token with alg "none": 401 invalid-token
+3. authorization by role (RBAC)
+   anna reads the invoice for her own unit: 200 (INV-1001, unit C-01/101)
+   carol (front desk) reads the same invoice: 403 role-not-allowed
+4. authorization by object (the IDOR)
+   anna reads her neighbor's invoice (102): 200 (INV-1002, unit C-01/102)
+   anna reads an invoice from community C-02: 200 (INV-1005, unit C-02/201)
+   ed (C-02) lists the invoices of C-01: 200 (4 invoices)
+5. enumeration: each one tries the 12 invoices, INV-1001 to INV-1012
+   anna   reads 12 of 12 (C-01, C-02, C-03)
+   brian  reads 12 of 12 (C-01, C-02, C-03)
+   dora   reads 12 of 12 (C-01, C-02, C-03)
+   ed     reads 12 of 12 (C-01, C-02, C-03)

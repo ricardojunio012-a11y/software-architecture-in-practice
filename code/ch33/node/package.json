@@ -1,0 +1,20 @@
+{
+  "name": "morada-en-ch33",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "@types/pg": "8.11.10",
+    "dependency-cruiser": "18.5.0",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1120.0",
+    "@aws-sdk/client-sqs": "3.1120.0",
+    "pg": "8.13.1"
+  }
+}
