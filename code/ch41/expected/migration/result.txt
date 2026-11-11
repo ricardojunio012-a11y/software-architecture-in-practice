@@ -1,0 +1,29 @@
+1. naive copy (parseFloat, new Date, parking space as a unit)
+  item                                      legacy   Morada  quarant.
+  units (apts of type A)                         24       34        0  DIFFERENT
+  parking spaces (apts of type G)                10        0        0  DIFFERENT
+  charges                                       102      102        0  ok
+  sum of the charges (cents)                8305980   321540        0  DIFFERENT
+  sum of the paid ones (cents)              7299191   257812        0  DIFFERENT
+  due dates outside the charge's month            0       68        0  DIFFERENT
+  reconciliation: 5 items with a difference
+
+2. through the anticorruption layer
+  item                                      legacy   Morada  quarant.
+  units (apts of type A)                         24       24        0  ok
+  parking spaces (apts of type G)                10        8        2  ok
+  charges                                       102       96        6  ok
+  sum of the charges (cents)                8305980  8243052    62928  ok
+  sum of the paid ones (cents)              7299191  7246751    52440  ok
+  due dates outside the charge's month            0        0        0  ok
+  reconciliation: passed
+
+3. the same migration again (idempotent)
+  item                                      legacy   Morada  quarant.
+  units (apts of type A)                         24       24        0  ok
+  parking spaces (apts of type G)                10        8        2  ok
+  charges                                       102       96        6  ok
+  sum of the charges (cents)                8305980  8243052    62928  ok
+  sum of the paid ones (cents)              7299191  7246751    52440  ok
+  due dates outside the charge's month            0        0        0  ok
+  reconciliation: passed

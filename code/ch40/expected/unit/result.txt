@@ -1,0 +1,63 @@
+INPUTS
+  communities         3,000  communities (ch. 17)
+  subscription          300  $ per community per month (ch. 17)
+  invoices              110  invoices per community per month (ch. 25)
+  requests           50,000  requests per community per month (ch. 34)
+  hour                  150  $ per engineering hour (ch. 14)
+  person             25,200  $ per person per month (ch. 32)
+  node               0.0816  $ per hour, EC2 m7g.large (ch. 31)
+  cluster            0.1000  $ per hour, EKS control plane (ch. 32)
+  database           0.3370  $ per hour, RDS db.m7g.large Multi-AZ (ch. 17)
+  disk               0.2300  $ per GB-month, gp3 Multi-AZ (ch. 17)
+  plan1              0.0599  $ per hour, 1-year Compute Savings Plan (ch. 40)
+  plan3              0.0414  $ per hour, 3-year Compute Savings Plan (ch. 40)
+  reserved1          0.2595  $ per hour, RDS reserved for 1 year (ch. 40)
+  signals            1.1533  $ per million requests (logs and traces) (ch. 34)
+  ai                 0.2100  $ per community, assistant on the smaller model (ch. 20)
+  backup             0.2100  $ per GB-month of backup in another account (ch. 35)
+  secrets                35  $ per month, secrets vault (ch. 36)
+  data               0.1000  GB per community (ch. 31)
+  dbHours                 8  hours of operation per database per month (ch. 31)
+  drill                 800  $ per database per month, restore drill (ch. 35)
+  keycloak           0.2500  person to operate Keycloak (ch. 36)
+  pipeline              302  $ per month, pipeline for 40 engineers (ch. 33)
+  soc2                6,250  $ per month, SOC 2 from the 2nd year on (ch. 37)
+  perNode             1,500  communities per node (premise)
+  perDatabase         4,000  communities on a db.m7g.large (premise)
+  perAgent            1,000  communities per support person (premise)
+  perPlatform             5  installations per platform person (premise)
+  installHours            8  hours per installation per month (premise)
+  perCell             3,000  communities per cell (premise)
+  isolated           0.2000  share in management companies that require a silo (premise)
+  perSilo               400  communities per silo (ch. 31)
+
+COST OF ONE MONTH: pool, 3,000 communities
+  control plane             infra, fixed              $73
+  application nodes         infra, step              $119
+  databases                 infra, step              $246
+  disk                      infra, linear             $69
+  backup                    infra, linear             $63
+  logs and traces           infra, linear            $173
+  assistant                 infra, linear            $630
+  secrets vault             infra, fixed              $35
+  database operations       people, step           $2,000
+  installation operations   people, step           $1,200
+  platform                  people, step          $25,200
+  Keycloak                  people, fixed          $6,300
+  support                   people, step          $75,600
+  infrastructure                                   $1,408
+  people                                         $110,300
+  total (COGS)                                   $111,708
+
+PER UNIT
+  per community: $37.24 (infra $0.47, people $36.77)
+  per invoice, dividing everything: $0.339
+  COGS over the subscription: 12.4%
+
+SHOWBACK BY MODULE (split by requests)
+  billing              30.0%     $33,323
+  front desk           35.0%     $38,877
+  communications       20.0%     $22,216
+  bookings and others  15.0%     $16,662
+  assistant           direct        $630
+  per invoice, Billing only: $0.101

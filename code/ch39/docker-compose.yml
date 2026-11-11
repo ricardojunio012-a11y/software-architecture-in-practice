@@ -1,0 +1,16 @@
+# Chapter 39: technical debt, hotspots, and change coupling.
+services:
+  # Generates Morada's simulated git history inside the container, with fixed authors
+  # and dates, and analyzes it. Nothing is published to the host except output/
+  app:
+    build: ./node
+    image: morada-en-ch39-node
+    volumes:
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch39
+    working_dir: /ch39

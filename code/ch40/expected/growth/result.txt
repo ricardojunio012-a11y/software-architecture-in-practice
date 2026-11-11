@@ -1,0 +1,69 @@
+10x GROWTH: 3,000 to 30,000 communities
+
+pool: modular monolith, one database for all (1 and 1 installations)
+  line                      grows          3,000       30,000  times
+  control plane             fixed            $73          $73    1.0
+  application nodes         step            $119       $1,191   10.0
+  databases                 step            $246       $1,968    8.0
+  disk                      linear           $69         $690   10.0
+  backup                    linear           $63         $630   10.0
+  logs and traces           linear          $173       $1,730   10.0
+  assistant                 linear          $630       $6,300   10.0
+  secrets vault             fixed            $35          $35    1.0
+  database operations       step          $2,000       $2,000    1.0
+  installation operations   step          $1,200       $1,200    1.0
+  platform                  step         $25,200      $25,200    1.0
+  Keycloak                  fixed         $6,300       $6,300    1.0
+  support                   step         $75,600     $756,000   10.0
+  total                                 $111,708     $803,317    7.2
+  per community: $37.24 -> $26.78
+
+cells: cells of up to 3,000 communities (1 and 10 installations)
+  line                      grows          3,000       30,000  times
+  control plane             fixed            $73          $73    1.0
+  application nodes         step            $119       $1,191   10.0
+  databases                 step            $246       $2,460   10.0
+  router                    fixed           $119         $119    1.0
+  disk                      linear           $69         $690   10.0
+  backup                    linear           $63         $630   10.0
+  logs and traces           linear          $173       $1,730   10.0
+  assistant                 linear          $630       $6,300   10.0
+  secrets vault             fixed            $35          $35    1.0
+  database operations       step          $2,000      $20,000   10.0
+  installation operations   step          $1,200      $12,000   10.0
+  platform                  step         $25,200      $50,400    2.0
+  Keycloak                  fixed         $6,300       $6,300    1.0
+  support                   step         $75,600     $756,000   10.0
+  total                                 $111,827     $857,929    7.7
+  per community: $37.28 -> $28.60
+
+silos: pool and one silo per large management company (3 and 16 installations)
+  line                      grows          3,000       30,000  times
+  control plane             fixed            $73          $73    1.0
+  application nodes         step            $357       $2,740    7.7
+  databases                 step            $738       $5,658    7.7
+  disk                      linear           $69         $690   10.0
+  backup                    linear           $63         $630   10.0
+  logs and traces           linear          $173       $1,730   10.0
+  assistant                 linear          $630       $6,300   10.0
+  secrets vault             fixed            $35          $35    1.0
+  database operations       step          $6,000      $32,000    5.3
+  installation operations   step          $3,600      $19,200    5.3
+  platform                  step         $25,200     $100,800    4.0
+  Keycloak                  fixed         $6,300       $6,300    1.0
+  support                   step         $75,600     $756,000   10.0
+  total                                 $118,838     $932,156    7.8
+  per community: $39.61 -> $31.07
+
+COST PER COMMUNITY ALONG THE WAY
+  communities         pool     cells     silos
+  3,000             $37.24    $37.28    $39.61
+  6,000             $31.43    $31.99    $33.22
+  9,000             $29.53    $30.23    $34.25
+  12,000            $28.53    $29.34    $32.41
+  15,000            $27.94    $28.82    $31.51
+  18,000            $27.59    $29.86    $30.72
+  21,000            $27.30    $29.41    $31.56
+  24,000            $27.08    $29.07    $30.96
+  27,000            $26.91    $28.81    $30.62
+  30,000            $26.78    $28.60    $31.07

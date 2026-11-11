@@ -1,0 +1,17 @@
+389 commits; 2 ignored for touching more than 10 files
+
+ # file                       revisions  lines   complexity   priority main author
+ 1 billing/charges.ts                91    519          976         64 Anna 66%
+ 2 billing/invoices.ts               57    281          341         14 Anna 53%
+ 3 billing/status.ts                 44    236          286          9 Anna 20%
+ 4 bookings/rules.ts                 45    228          275          9 Anna 18%
+ 5 bookings/calendar.ts              33    245          297          7 Brian 21%
+ 6 frontdesk/visitors.ts             40    200          242          7 Carol 20%
+ 7 billing/cards.ts                  30    236          286          6 Ellen 20%
+ 8 maintenance/requests.ts           28    218          264          5 Grace 29%
+ 9 communications/notices.ts         22    173          209          3 David 27%
+10 directory/units.ts                20    164          198          3 Frank 30%
+11 directory/residents.ts            14    146          176          2 David 21%
+12 legacy/annual-report.ts            2    602        1,520          2 David 100%
+13 communications/notifier.ts        14     92          110          1 Carol 29%
+14 frontdesk/packages.ts             12    101          121          1 Frank 42%

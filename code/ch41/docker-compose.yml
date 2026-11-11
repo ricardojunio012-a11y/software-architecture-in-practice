@@ -1,0 +1,17 @@
+# Chapter 41: legacy modernization and evolutionary architecture.
+services:
+  # Beta's legacy (SQLite), Morada (embedded PostgreSQL, PGlite), the anticorruption
+  # layer and the proxy run in a single container, each on its own HTTP server, on
+  # internal ports. Time is simulated: nothing is published on host ports
+  app:
+    build: ./node
+    image: morada-en-ch41-node
+    volumes:
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch41
+    working_dir: /ch41

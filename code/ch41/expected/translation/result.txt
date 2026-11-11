@@ -1,0 +1,22 @@
+legacy: 3 properties with EIN 12-3456789
+  P0101 ACACIA GROVE TOWER A; P0102 ACACIA GROVE TOWER B; P0103 ACACIA GROVE TOWER C
+  24 apts of type A, 10 of type G (parking spaces)
+  102 assessments from 08/2026 to 10/2026
+
+Morada: 1 community, c12345678 ("ACACIA GROVE")
+  building A: 8 units
+  building B: 8 units
+  building C: 8 units
+  8 parking spaces, each linked to a unit
+  96 charges
+  quarantine: 2
+    P0101/G-09: parking space with no unit
+    P0101/G-10: parking space with no unit
+
+examples, before and after:
+  apt P0102/0201 type A share 0.036496
+    -> unit c12345678-B-0201, building B, share 0.036496
+  apt P0101/G-03 type G link P0102/0101
+    -> parking space c12345678-G-03 of unit c12345678-B-0101
+  assessment P0101/0102 10/2026 10/10/2026 1,258.49 paid Y 05/10/2026
+    -> charge c12345678-A-0102.2026-10, 2026-10-10, $1,258.49, paid on 2026-10-05

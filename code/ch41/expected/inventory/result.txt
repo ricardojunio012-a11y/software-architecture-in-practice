@@ -1,0 +1,16 @@
+30 days of use of Beta's app, measured at the proxy
+route                    calls  properties  state
+GET apts                    23           4  apt
+GET assessments            113           4  assessment
+POST pay                    31           4  assessment
+GET delinquents             59           4  assessment
+POST notices                15           4  notice
+GET form1099                 0           0  assessment (annual report)
+total                      241
+
+slices by the state each route touches:
+  notices: state of its own, can move to Morada by itself
+  apts, assessments, pay, delinquents: the same state; they move
+    together, per customer, after the customer's data is migrated
+  form1099: no calls in 30 days; a candidate to turn off without
+    migrating

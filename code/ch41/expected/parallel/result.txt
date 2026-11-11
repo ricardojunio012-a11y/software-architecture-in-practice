@@ -1,0 +1,23 @@
+round 1: 10 days, Acacia Grove in shadow mode, layer rules v1
+  requests compared: 52; matching: 23
+  different (GET assessments): 1 item, 7 times
+    P0101/0101 11/2026
+  missing in Morada (GET apts): 2 items, 8 times
+    P0101/G-09, P0101/G-10
+  missing in Morada (GET assessments): 4 items, 20 times
+    P0101/G-09 10/2026, P0101/G-09 11/2026, P0101/G-10 10/2026, ...
+  missing in Morada (GET delinquents): 1 item, 3 times
+    P0101/G-09
+  rounding (accepted) (GET assessments): 18 items, 109 times
+    P0101/0102 11/2026, P0101/0201 11/2026, P0101/0202 11/2026, ...
+  unexplained: 7 items, 38 times
+
+fixes: board president's exemption from the notes; G-09 and G-10 linked
+
+round 2: 10 more days, layer rules v2
+  requests compared: 75; matching: 39
+  rounding (accepted) (GET assessments): 19 items, 140 times
+    P0101/0102 11/2026, P0101/0201 11/2026, P0101/0202 11/2026, ...
+  rounding (accepted) (GET delinquents): 19 items, 71 times
+    P0101/0102, P0101/0201, P0101/0202, ...
+  unexplained: 0 items, 0 times

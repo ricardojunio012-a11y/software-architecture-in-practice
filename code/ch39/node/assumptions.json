@@ -1,0 +1,14 @@
+{
+  "hourlyRate": 150,
+  "personDayRate": 1200,
+  "paydown": { "personDays": 30, "people": 2, "interestReduction": 0.5 },
+  "payAlong": { "personDays": 15, "interestReduction": 0.35 },
+  "feature": {
+    "name": "recurring card billing",
+    "communities": 3000,
+    "adoption": 0.1,
+    "monthlyPrice": 40,
+    "weeksToday": 6,
+    "weeksAfter": 4
+  }
+}

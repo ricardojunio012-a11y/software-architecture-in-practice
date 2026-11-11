@@ -1,0 +1,14 @@
+USAGE COMMITMENT: application nodes, one 30-day month
+  1,808 node-hours; minimum 2, maximum 6
+  commitment        1 year   savings   3 years   savings
+  0 nodes             $148      0.0%      $148      0.0%
+  1 node              $132     10.6%      $119     19.6%
+  2 nodes             $116     21.2%       $90     39.2%
+  3 nodes             $137      7.0%       $97     34.1%
+  4 nodes             $178    -20.5%      $124     15.6%
+  5 nodes             $218    -47.9%      $152     -2.8%
+  6 nodes             $259    -75.4%      $179    -21.2%
+
+DATABASE db.m7g.large Multi-AZ, running all month
+  on demand                  $243
+  reserved for 1 year        $187  savings of 23.0%

@@ -1,0 +1,5 @@
+Pairs that changed together in at least 5 commits and 30% of the time
+
+file A                     file B                     together degree  modules   import?
+billing/status.ts          bookings/rules.ts                34    76%  other     NO
+billing/charges.ts         billing/invoices.ts              33    45%  same      yes

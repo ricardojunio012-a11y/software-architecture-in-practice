@@ -1,0 +1,9 @@
+Repository: /tmp/morada
+commits: 389, from 2025-01-06 to 2026-06-26
+authors: 8; files: 14
+
+The four most recent commits:
+2026-06-26  Carol Davis     feat(maintenance): new rule in requests.ts
+2026-06-23  Anna Lee        fix(billing): adjustment in charges.ts
+2026-06-23  Ellen Parker    feat(communications): new rule in notices.ts
+2026-06-23  Henry Allen     feat(billing): new rule in invoices.ts

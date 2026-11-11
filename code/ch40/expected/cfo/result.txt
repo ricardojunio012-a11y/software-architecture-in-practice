@@ -1,0 +1,17 @@
+TABLE FOR THE CFO: one month, in dollars
+                             pool       pool      cells      cells      silos      silos
+communities                 3,000     30,000      3,000     30,000      3,000     30,000
+revenue                   900,000  9,000,000    900,000  9,000,000    900,000  9,000,000
+COGS: infrastructure        1,408     12,617      1,527     13,229      2,138     17,856
+COGS: operations           34,700     34,700     34,700     88,700     41,100    158,300
+COGS: support              75,600    756,000     75,600    756,000     75,600    756,000
+COGS total                111,708    803,317    111,827    857,929    118,838    932,156
+gross margin              788,292  8,196,683    788,173  8,142,071    781,162  8,067,844
+gross margin (%)            87.6%      91.1%      87.6%      90.5%      86.8%      89.6%
+infra / revenue              0.2%       0.1%       0.2%       0.1%       0.2%       0.2%
+COGS per community          37.24      26.78      37.28      28.60      39.61      31.07
+COGS per invoice            0.339      0.243      0.339      0.260      0.360      0.282
+
+Outside COGS (operating expenses): pipeline $302 and SOC 2 $6,250 per month.
+Silos with 3,000 communities: $7,130 more than the pool, $11.88 per isolated one.
+Silos with 30,000 communities: $128,839 more than the pool, $21.47 per isolated one.

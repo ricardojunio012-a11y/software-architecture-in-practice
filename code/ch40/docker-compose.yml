@@ -1,0 +1,17 @@
+# Chapter 40: infrastructure cost and FinOps.
+services:
+  # Morada's cost calculator: cost per community and per invoice, 10x growth in three
+  # architectures, the table for the CFO, and the usage commitment. Arithmetic only, no
+  # cloud and no published ports
+  app:
+    build: ./node
+    image: morada-en-ch40-node
+    volumes:
+      - ./output:/data/output
+
+  # Compares the output with the approved result
+  tools:
+    build: ./tools
+    volumes:
+      - ./:/ch40
+    working_dir: /ch40

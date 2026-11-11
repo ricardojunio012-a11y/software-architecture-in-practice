@@ -1,0 +1,18 @@
+Hotspot: src/billing/charges.ts
+Period: 129 commits from 2026-01-01 to 2026-06-30 (two quarters)
+
+Interest
+  changes that touched the file                             29
+  hours per change to the file                          12.3 h
+    a year earlier (2025-01-01 to 2025-06-30)            7.0 h
+  hours per change to the rest of the code               5.3 h
+  fixes among the changes to the file                      41%
+  fixes among the changes to the rest                      27%
+  extra hours per quarter                                101 h
+  interest per quarter ($150 per hour)                 $15,200
+
+Options (feature: recurring card billing)
+                 weeks    paydown  int./year      delay  12 months  24 months
+  don't pay        6.0         $0    $60,600     $1,400    $62,000   $122,700
+  pay first        7.0    $36,000    $30,300     $4,200    $70,500   $100,800
+  pay along        5.5    $18,000    $39,400         $0    $57,400    $96,800

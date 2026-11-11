@@ -1,0 +1,19 @@
+2026-11-01: Acacia Grove on Morada; form1099 turned off
+  the old app asks for form1099: 410 ROUTE OFF
+2026-12-01: 30 days later, calls by target
+  Acacia Grove -> Morada: 213
+  Acacia Grove -> legacy: 0
+  Ironwood Place -> legacy: 54
+
+checklist to turn off Acacia Grove in the legacy:
+  [x] no calls from Acacia Grove to the legacy in 30 days
+  [x] reconciliation passed on cutover day
+  [x] quarantine empty
+  [x] archive exported: 170 rows, sha256 077d3be0831a976f
+
+turning off Acacia Grove in the legacy:
+  assessment: 136 rows deleted
+  apt: 34 rows deleted
+  notice: 0 rows deleted
+  rule undone by mistake, the legacy answers: 404
+  the legacy still has Ironwood Place: 1 property, 12 apts
